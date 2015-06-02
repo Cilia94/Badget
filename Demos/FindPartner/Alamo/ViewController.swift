@@ -269,7 +269,7 @@ class ViewController: UIViewController {
         
         let documentsPath = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)[0] as! String
         let theFile = documentsPath.stringByAppendingPathComponent("users")
-        //println(documentsPath)
+        println(documentsPath)
         if let loadedFile = NSKeyedUnarchiver.unarchiveObjectWithFile(theFile) as? [SavedUser]{
             saved_user = loadedFile
         }
@@ -316,7 +316,7 @@ class ViewController: UIViewController {
             "fav_genre": self.fav_genre
         ]
         
-        Alamofire.request(.POST, "http://student.howest.be/eliot.colinet/20142015/MA4/BADGET/api/users", parameters: parameters as! [String : AnyObject]).responseJSON{(_,_,data,_) in
+        Alamofire.request(.POST, "http://student.howest.be/eliot.colinet/20142015/MA4/BADGET/api/users", parameters: parameters as? [String : AnyObject]).responseJSON{(_,_,data,_) in
             var json = JSON(data!)
             
             self.saved_user[0].id = json["id"].intValue
@@ -337,7 +337,7 @@ class ViewController: UIViewController {
             "fav_genre": fav_genre
         ]
         
-        Alamofire.request(.PUT, "http://student.howest.be/eliot.colinet/20142015/MA4/BADGET/api/users/\(id)", parameters: parameters as! [String : AnyObject])
+        Alamofire.request(.PUT, "http://student.howest.be/eliot.colinet/20142015/MA4/BADGET/api/users/\(id)", parameters: parameters as? [String : AnyObject])
     }
     
     func setPartners(id1:Int, id2:Int){
@@ -355,7 +355,7 @@ class ViewController: UIViewController {
                     "fav_stage": Dict["fav_stage"].stringValue,
                     "fav_genre": Dict["fav_genre"].stringValue
                 ]
-                Alamofire.request(.PUT, "http://student.howest.be/eliot.colinet/20142015/MA4/BADGET/api/users/\(id1)", parameters: parameters as! [String : AnyObject])
+                Alamofire.request(.PUT, "http://student.howest.be/eliot.colinet/20142015/MA4/BADGET/api/users/\(id1)", parameters: parameters as? [String : AnyObject])
             }
         }
         
@@ -372,7 +372,7 @@ class ViewController: UIViewController {
                     "fav_stage": Dict["fav_stage"].stringValue,
                     "fav_genre": Dict["fav_genre"].stringValue
                 ]
-                Alamofire.request(.PUT, "http://student.howest.be/eliot.colinet/20142015/MA4/BADGET/api/users/\(id2)", parameters: parameters as! [String : AnyObject])
+                Alamofire.request(.PUT, "http://student.howest.be/eliot.colinet/20142015/MA4/BADGET/api/users/\(id2)", parameters: parameters as? [String : AnyObject])
             }
         }
         NSKeyedArchiver.archiveRootObject(saved_user, toFile: filename)
