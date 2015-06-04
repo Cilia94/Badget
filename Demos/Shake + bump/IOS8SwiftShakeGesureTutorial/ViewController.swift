@@ -22,9 +22,9 @@ class ViewController: UIViewController {
             motionManager.startAccelerometerUpdatesToQueue(queue, withHandler:
                 {(data: CMAccelerometerData!, error: NSError!) in
                     
-                    println("X = \(data.acceleration.x)")
-                    println("Y = \(data.acceleration.y)")
-                    println("Z = \(data.acceleration.z)")
+                    //println("X = \(data.acceleration.x)")
+                    //println("Y = \(data.acceleration.y)")
+                    //println("Z = \(data.acceleration.z)")
                     
                 }
             )
@@ -37,9 +37,9 @@ class ViewController: UIViewController {
             motionManager.startDeviceMotionUpdatesToQueue(NSOperationQueue.mainQueue()) {
                 [weak self] (data: CMDeviceMotion!, error: NSError!) in
                 
-                if data.userAcceleration.x < -2.5 {
+                if data.userAcceleration.x < -1 {
                     //self?.navigationController?.popViewControllerAnimated(true)
-                    println("Acceleration noticed!")
+                    println("Acceleration noticed! \(data.userAcceleration.x)")
                 }
             }
         } else {

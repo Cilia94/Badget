@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		731713781B20543200676F5F /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 731713771B20543200676F5F /* Reachability.swift */; };
 		73312F431B1C8BD5004218ED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73312F421B1C8BD5004218ED /* AppDelegate.swift */; };
 		73312F451B1C8BD5004218ED /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 73312F441B1C8BD5004218ED /* Images.xcassets */; };
 		73312F481B1C8BD5004218ED /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73312F461B1C8BD5004218ED /* LaunchScreen.xib */; };
@@ -16,7 +17,6 @@
 		73448F1A1B1CB78D001385FE /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73448F191B1CB78D001385FE /* View.swift */; };
 		734AA7A61B1DCE4E00561BEC /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 734AA79F1B1DCE2100561BEC /* Alamofire.framework */; };
 		734AA7A81B1DCE6F00561BEC /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734AA7A71B1DCE6F00561BEC /* SwiftyJSON.swift */; };
-		73E6692D1B1DFD77005E168A /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 734AA79F1B1DCE2100561BEC /* Alamofire.framework */; };
 		73E6692E1B1DFD77005E168A /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 734AA79F1B1DCE2100561BEC /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
@@ -80,6 +80,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		731713771B20543200676F5F /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		73312F3D1B1C8BD5004218ED /* compass.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = compass.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		73312F411B1C8BD5004218ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		73312F421B1C8BD5004218ED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -101,7 +102,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				734AA7A61B1DCE4E00561BEC /* Alamofire.framework in Frameworks */,
-				73E6692D1B1DFD77005E168A /* Alamofire.framework in Frameworks */,
 				73312F611B1C8D60004218ED /* CoreLocation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -143,6 +143,7 @@
 				73312F5D1B1C8C07004218ED /* ViewController.swift */,
 				734AA7A71B1DCE6F00561BEC /* SwiftyJSON.swift */,
 				73448F191B1CB78D001385FE /* View.swift */,
+				731713771B20543200676F5F /* Reachability.swift */,
 				73312F441B1C8BD5004218ED /* Images.xcassets */,
 				73312F461B1C8BD5004218ED /* LaunchScreen.xib */,
 				73312F401B1C8BD5004218ED /* Supporting Files */,
@@ -327,6 +328,7 @@
 				73312F5E1B1C8C07004218ED /* ViewController.swift in Sources */,
 				73312F431B1C8BD5004218ED /* AppDelegate.swift in Sources */,
 				73448F1A1B1CB78D001385FE /* View.swift in Sources */,
+				731713781B20543200676F5F /* Reachability.swift in Sources */,
 				734AA7A81B1DCE6F00561BEC /* SwiftyJSON.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

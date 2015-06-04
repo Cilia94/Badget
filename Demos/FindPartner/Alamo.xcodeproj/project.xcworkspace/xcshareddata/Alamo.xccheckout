@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>6850BF5C-F742-4500-B442-7C520633208C</string>
 	<key>IDESourceControlProjectName</key>
-	<string>Alamo</string>
+	<string>project</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>9D9328AA426ED86F6A32BF61FB892FCBC13203CD</key>
 		<string>https://github.com/Cilia94/Badget</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>Demos/FindPartner/Alamo.xcodeproj</string>
+	<string>Demos/FindPartner/Alamo.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>9D9328AA426ED86F6A32BF61FB892FCBC13203CD</key>

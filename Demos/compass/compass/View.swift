@@ -14,13 +14,13 @@ class View: UIView {
     
     override init(frame: CGRect) {
         
-        self.imageView = UIImageView(frame: CGRectMake(0, 0, 200, 200))
+        self.imageView = UIImageView(frame: CGRectMake(60, 50, 200, 200))
         
         super.init(frame: frame)
         
         self.imageView.image = UIImage(named: "compass")
     
-        self.imageView.center = self.center;
+        //self.imageView.center = self.center;
         self.addSubview(self.imageView)
         
     }
