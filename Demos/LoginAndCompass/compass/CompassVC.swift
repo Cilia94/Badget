@@ -20,7 +20,7 @@ extension CLLocation {
     }
 }
 
-class ViewController: UIViewController, CLLocationManagerDelegate {
+class CompassVC: UIViewController, CLLocationManagerDelegate {
     
     var theView:View {
         get {
@@ -210,8 +210,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     func postUserLocation( lat:Double, lon:Double) {
-        
-        println("POST USER LOCATION http://student.howest.be/eliot.colinet/20142015/MA4/BADGET/api/users/\(self.user_id)" )
         
         Alamofire.request(.GET, "http://student.howest.be/eliot.colinet/20142015/MA4/BADGET/api/users/\(self.user_id)").responseJSON{(_,_,data,_) in
             var json = JSON(data!)
