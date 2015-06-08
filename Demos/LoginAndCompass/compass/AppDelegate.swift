@@ -13,20 +13,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     var navVC: UINavigationController?
+    var mainVC: FindPartnerVC?
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        let mainVC = FindPartnerVC(nibName: nil, bundle: nil)
+        self.mainVC = FindPartnerVC(nibName: nil, bundle: nil)
         let compassVC = CompassVC(nibName: nil, bundle: nil)
         
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         
         switch NSUserDefaults.standardUserDefaults().integerForKey("lastPage") {
         case 0:
-            self.navVC = NavViewController(rootViewController: mainVC);
+            self.navVC = NavViewController(rootViewController: self.mainVC!);
         case 2:
             self.navVC = NavViewController(rootViewController: compassVC);
         default:
-            self.navVC = NavViewController(rootViewController: mainVC);
+            self.navVC = NavViewController(rootViewController: self.mainVC!);
         }
         
         self.navVC!.navigationBar.hidden = true;
@@ -42,22 +43,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationWillResignActive(application: UIApplication) {
-        if (NSUserDefaults.standardUserDefaults().integerForKey("user_id") != 0 && NSUserDefaults.standardUserDefaults().integerForKey("partner_id") == 0) {
+        /*if (NSUserDefaults.standardUserDefaults().integerForKey("user_id") != 0 && NSUserDefaults.standardUserDefaults().integerForKey("partner_id") == 0) {
             println("DELETE USER FROM DB! 1")
+            var user_id = NSUserDefaults.standardUserDefaults().integerForKey("user_id")
+            self.mainVC!.deleteUser(user_id)
             let p = NSUserDefaults.standardUserDefaults().integerForKey("lastPage")
             let appDomain = NSBundle.mainBundle().bundleIdentifier!
             NSUserDefaults.standardUserDefaults().removePersistentDomainForName(appDomain)
             NSUserDefaults.standardUserDefaults().setInteger(p, forKey: "lastPage")
-        }
+        }*/
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
     }
 
     func applicationDidEnterBackground(application: UIApplication) {
         if (NSUserDefaults.standardUserDefaults().integerForKey("user_id") != 0 && NSUserDefaults.standardUserDefaults().integerForKey("partner_id") == 0) {
-            println("DELETE USER FROM DB! 2")
+            var user_id = NSUserDefaults.standardUserDefaults().integerForKey("user_id")
+            self.mainVC!.deleteUser(user_id)
+            println("[applicationDidEnterBackground] DELETED USER \(user_id) FROM DB!")
+            let p = NSUserDefaults.standardUserDefaults().integerForKey("lastPage")
             let appDomain = NSBundle.mainBundle().bundleIdentifier!
             NSUserDefaults.standardUserDefaults().removePersistentDomainForName(appDomain)
+            NSUserDefaults.standardUserDefaults().setInteger(p, forKey: "lastPage")
         }
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.

@@ -53,6 +53,9 @@ class CompassVC: UIViewController, CLLocationManagerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //self.clearNSUserDefault()
+        
         NSUserDefaults.standardUserDefaults().setInteger(2, forKey: "lastPage")
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "reachabilityChanged:", name: ReachabilityChangedNotification, object: reachability)
