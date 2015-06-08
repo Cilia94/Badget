@@ -15,11 +15,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var navVC: UINavigationController?
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        let mainvC = FindPartnerVC(nibName: nil, bundle: nil)
+        let mainVC = FindPartnerVC(nibName: nil, bundle: nil)
+        let compassVC = CompassVC(nibName: nil, bundle: nil)
         
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         
-        self.navVC = NavViewController(rootViewController: mainvC);
+        switch NSUserDefaults.standardUserDefaults().integerForKey("lastPage") {
+        case 0:
+            self.navVC = NavViewController(rootViewController: mainVC);
+        case 2:
+            self.navVC = NavViewController(rootViewController: compassVC);
+        default:
+            self.navVC = NavViewController(rootViewController: mainVC);
+        }
+        
         self.navVC!.navigationBar.hidden = true;
         self.navVC!.interactivePopGestureRecognizer.enabled = false
         
@@ -33,11 +42,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationWillResignActive(application: UIApplication) {
+        if (NSUserDefaults.standardUserDefaults().integerForKey("user_id") != 0 && NSUserDefaults.standardUserDefaults().integerForKey("partner_id") == 0) {
+            println("DELETE USER FROM DB! 1")
+            let p = NSUserDefaults.standardUserDefaults().integerForKey("lastPage")
+            let appDomain = NSBundle.mainBundle().bundleIdentifier!
+            NSUserDefaults.standardUserDefaults().removePersistentDomainForName(appDomain)
+            NSUserDefaults.standardUserDefaults().setInteger(p, forKey: "lastPage")
+        }
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
     }
 
     func applicationDidEnterBackground(application: UIApplication) {
+        if (NSUserDefaults.standardUserDefaults().integerForKey("user_id") != 0 && NSUserDefaults.standardUserDefaults().integerForKey("partner_id") == 0) {
+            println("DELETE USER FROM DB! 2")
+            let appDomain = NSBundle.mainBundle().bundleIdentifier!
+            NSUserDefaults.standardUserDefaults().removePersistentDomainForName(appDomain)
+        }
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
     }
@@ -48,6 +69,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        if (NSUserDefaults.standardUserDefaults().integerForKey("lastPage") < 0 ) {
+            println("applicationDidBecomeActive")
+            let mainVC = FindPartnerVC(nibName: nil, bundle: nil)
+            self.navVC!.pushViewController(mainVC, animated: true)
+        }
     }
 
     func applicationWillTerminate(application: UIApplication) {

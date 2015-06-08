@@ -14,7 +14,7 @@
 		<string>https://github.com/Cilia94/Badget</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>Demos/compass/compass.xcodeproj</string>
+	<string>Demos/LoginAndCompass/compass.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>9D9328AA426ED86F6A32BF61FB892FCBC13203CD</key>

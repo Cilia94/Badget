@@ -10,7 +10,6 @@ import UIKit
 import CoreLocation
 import Darwin
 import Alamofire
-import AudioToolbox
 
 extension CLLocation {
     class func distance(#from: CLLocationCoordinate2D, to:CLLocationCoordinate2D) -> CLLocationDistance {
@@ -44,10 +43,9 @@ class CompassVC: UIViewController, CLLocationManagerDelegate {
     var GPSdegrees:Double = 0
     var heading:Double = 0
     var partnerDegrees:Double = 0
-    var user_id:Int = 2
+    
     var userLat:Double = 0
     var userLon:Double = 0
-    var partner_id:Int = 5   // 5 Kortrijk   4 Apple   3 PizzaHut
     var partnerLat:Double = 0
     var partnerLon:Double = 0
     var lastRotation:Double = 0
@@ -55,6 +53,7 @@ class CompassVC: UIViewController, CLLocationManagerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        NSUserDefaults.standardUserDefaults().setInteger(2, forKey: "lastPage")
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "reachabilityChanged:", name: ReachabilityChangedNotification, object: reachability)
         reachability.startNotifier()
@@ -67,8 +66,8 @@ class CompassVC: UIViewController, CLLocationManagerDelegate {
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
         locationManager.startUpdatingHeading()
-        //locationManager.headingFilter = 5
-        locationManager.headingFilter = kCLHeadingFilterNone
+        locationManager.headingFilter = 5
+        //locationManager.headingFilter = kCLHeadingFilterNone
         locationManager.distanceFilter = 2.5
         
         self.view = View(frame: UIScreen.mainScreen().bounds)
@@ -131,16 +130,6 @@ class CompassVC: UIViewController, CLLocationManagerDelegate {
         
     }
     
-    func checkDB() {
-        //println("Check DB!")
-        if reachability.isReachable() {
-            //println("Internet is on")
-            AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
-            self.getPartnerLocation()
-            self.postUserLocation(userLat, lon: userLon)
-        }
-    }
-    
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
         
         var userLocation:CLLocation = locations[0] as! CLLocation
@@ -184,18 +173,23 @@ class CompassVC: UIViewController, CLLocationManagerDelegate {
         }
         
         self.degreesLabel.text = "R : \(round(partnerDegrees))°"
-
+        
     }
     
-    func calcDist() -> Double {
-        var dist = round(CLLocation.distance(from: CLLocationCoordinate2DMake(self.userLat, self.userLon), to: CLLocationCoordinate2DMake(self.partnerLat, self.partnerLon))*10)/10
-        //println("Distance : \(dist)m")
-        return dist
+    func checkDB() {
+        //println("Check DB!")
+        if reachability.isReachable() {
+            //println("Internet is on")
+            self.getPartnerLocation()
+            self.postUserLocation(userLat, lon: userLon)
+        }
     }
     
     func getPartnerLocation() {
         
-        Alamofire.request(.GET, "http://student.howest.be/eliot.colinet/20142015/MA4/BADGET/api/locations/\(self.partner_id)").responseJSON{(_,_,data,_) in
+        let partner_id = NSUserDefaults.standardUserDefaults().integerForKey("partner_id")
+        
+        Alamofire.request(.GET, "http://student.howest.be/eliot.colinet/20142015/MA4/BADGET/api/locations/\(partner_id)").responseJSON{(_,_,data,_) in
             var json = JSON(data!)
             
             for Dict in json.arrayValue {
@@ -209,27 +203,6 @@ class CompassVC: UIViewController, CLLocationManagerDelegate {
         }
     }
     
-    func postUserLocation( lat:Double, lon:Double) {
-        
-        Alamofire.request(.GET, "http://student.howest.be/eliot.colinet/20142015/MA4/BADGET/api/users/\(self.user_id)").responseJSON{(_,_,data,_) in
-            var json = JSON(data!)
-            
-            for Dict in json.arrayValue {
-                
-                var loc_id = Dict["id"].intValue
-                
-                let parameters = [
-                    "id": loc_id,
-                    "user_id": self.user_id,
-                    "latitude": lat,
-                    "longitude": lon
-                ]
-                
-                Alamofire.request(.PUT, "http://student.howest.be/eliot.colinet/20142015/MA4/BADGET/api/locations/\(loc_id)", parameters: parameters as? [String : AnyObject])
-            }
-        }
-    }
-    
     func compass(x1:Double, y1:Double, x2:Double, y2:Double) -> Double {
         
         var radians = atan2((y1 - y2), (x1 - x2))
@@ -240,6 +213,26 @@ class CompassVC: UIViewController, CLLocationManagerDelegate {
             compassReading -= 360
         }
         return compassReading
+    }
+    
+    func calcDist() -> Double {
+        var dist = round(CLLocation.distance(from: CLLocationCoordinate2DMake(self.userLat, self.userLon), to: CLLocationCoordinate2DMake(self.partnerLat, self.partnerLon))*10)/10
+        //println("Distance : \(dist)m")
+        return dist
+    }
+    
+    func postUserLocation( lat:Double, lon:Double) {
+        
+        let parameters = [
+            "id": NSUserDefaults.standardUserDefaults().integerForKey("loc_id"),
+            "user_id": NSUserDefaults.standardUserDefaults().integerForKey("user_id"),
+            "latitude": lat,
+            "longitude": lon
+        ]
+        
+        let user_id = NSUserDefaults.standardUserDefaults().integerForKey("user_id")
+        
+        Alamofire.request(.PUT, "http://student.howest.be/eliot.colinet/20142015/MA4/BADGET/api/locations/\(user_id)", parameters: parameters as? [String : AnyObject])
     }
 
     override func didReceiveMemoryWarning() {

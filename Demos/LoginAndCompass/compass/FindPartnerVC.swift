@@ -16,63 +16,19 @@ class FindPartnerVC: UIViewController {
     let genreBtn:UIButton!
     var fav_stage:String!
     var fav_genre:String!
-    var saved_user:[SavedUser]
-    var filename: String{
-        get{
-            let documentsPath = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)[0] as! String
-            return documentsPath.stringByAppendingPathComponent("users")
-        }
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        NSUserDefaults.standardUserDefaults().setInteger(1, forKey: "lastPage")
         
-        if (saved_user.count == 0) {
-            let user = SavedUser(id: 0, name: "User", partner_id: 0)
-            saved_user.append(user)
-            if NSKeyedArchiver.archiveRootObject(saved_user, toFile: filename){
-                println("save successfull")
-            }
-            else{
-                println("cannot save")
-            }
-        }
+        //self.clearNSUserDefault()
         
-        if (saved_user[0].id == 0) {
-            let nameLabel = UILabel(frame: CGRectMake(50, 75, 500, 50))
-            nameInput = UITextField(frame: CGRectMake(50, 100, 500, 50))
-            
-            nameLabel.text = "Name :"
-            nameInput.placeholder = "Name"
-            
-            self.view.addSubview(nameLabel)
-            self.view.addSubview(nameInput)
-            
-            let stageLabel = UILabel(frame: CGRectMake(50, 150, 500, 50))
-            stageLabel.text = "Favourite stage :"
-            self.view.addSubview(stageLabel)
-            
-            stageBtn.setTitle("Select stage...", forState: UIControlState.Normal)
-            stageBtn.frame = CGRect(x: 50, y: 175, width: 250, height: 50)
-            self.view.addSubview(stageBtn)
-            stageBtn.addTarget(self, action: "stageButtonTouched", forControlEvents: UIControlEvents.TouchUpInside)
-            
-            let genreLabel = UILabel(frame: CGRectMake(50, 225, 500, 50))
-            genreLabel.text = "Favourite genre :"
-            self.view.addSubview(genreLabel)
-            
-            genreBtn.setTitle("Select genre...", forState: UIControlState.Normal)
-            genreBtn.frame = CGRect(x: 50, y: 250, width: 250, height: 50)
-            self.view.addSubview(genreBtn)
-            genreBtn.addTarget(self, action: "genreButtonTouched", forControlEvents: UIControlEvents.TouchUpInside)
-            
-            let sendBtn = UIButton.buttonWithType(UIButtonType.System) as! UIButton
-            sendBtn.setTitle("Send...", forState: UIControlState.Normal)
-            sendBtn.frame = CGRect(x: 50, y: 350, width: 250, height: 50)
-            self.view.addSubview(sendBtn)
-            sendBtn.addTarget(self, action: "sendClicked:", forControlEvents: UIControlEvents.TouchUpInside)
+        self.view.backgroundColor = UIColor.whiteColor()
+        
+        if (NSUserDefaults.standardUserDefaults().integerForKey("user_id") == 0) {
+            self.login()
         } else {
-            if (saved_user[0].partner_id == 0) {
+            if (NSUserDefaults.standardUserDefaults().integerForKey("partner_id") == 0) {
                 let alertLabel = UILabel(frame: CGRectMake(50, 75, 500, 50))
                 alertLabel.text = "!!! User logged in but needs partner !!!"
                 self.view.addSubview(alertLabel)
@@ -87,9 +43,53 @@ class FindPartnerVC: UIViewController {
         view.addGestureRecognizer(tap)
     }
     
-    func DismissKeyboard(){
+    func login(){
+        println("LOGIN")
         
+        let nameLabel = UILabel(frame: CGRectMake(50, 75, 500, 50))
+        nameInput = UITextField(frame: CGRectMake(50, 100, 500, 50))
+        
+        nameLabel.text = "Name :"
+        nameInput.placeholder = "Name"
+        
+        self.view.addSubview(nameLabel)
+        self.view.addSubview(nameInput)
+        
+        let stageLabel = UILabel(frame: CGRectMake(50, 150, 500, 50))
+        stageLabel.text = "Favourite stage :"
+        self.view.addSubview(stageLabel)
+        
+        stageBtn.setTitle("Select stage...", forState: UIControlState.Normal)
+        stageBtn.frame = CGRect(x: 50, y: 175, width: 250, height: 50)
+        self.view.addSubview(stageBtn)
+        stageBtn.addTarget(self, action: "stageButtonTouched", forControlEvents: UIControlEvents.TouchUpInside)
+        
+        let genreLabel = UILabel(frame: CGRectMake(50, 225, 500, 50))
+        genreLabel.text = "Favourite genre :"
+        self.view.addSubview(genreLabel)
+        
+        genreBtn.setTitle("Select genre...", forState: UIControlState.Normal)
+        genreBtn.frame = CGRect(x: 50, y: 250, width: 250, height: 50)
+        self.view.addSubview(genreBtn)
+        genreBtn.addTarget(self, action: "genreButtonTouched", forControlEvents: UIControlEvents.TouchUpInside)
+        
+        let sendBtn = UIButton.buttonWithType(UIButtonType.System) as! UIButton
+        sendBtn.setTitle("Send...", forState: UIControlState.Normal)
+        sendBtn.frame = CGRect(x: 50, y: 350, width: 250, height: 50)
+        self.view.addSubview(sendBtn)
+        sendBtn.addTarget(self, action: "sendClicked:", forControlEvents: UIControlEvents.TouchUpInside)
+    }
+    
+    func DismissKeyboard(){
         view.endEditing(true)
+    }
+    
+    func clearNSUserDefault(){
+        let appDomain = NSBundle.mainBundle().bundleIdentifier!
+        NSUserDefaults.standardUserDefaults().removePersistentDomainForName(appDomain)
+        if (NSUserDefaults.standardUserDefaults().integerForKey("user_id") == 0 && NSUserDefaults.standardUserDefaults().integerForKey("partner_id") == 0 && NSUserDefaults.standardUserDefaults().integerForKey("loc_id") == 0) {
+            println("[DEBUG] NSUserDefault cleared!")
+        }
     }
     
     func sendClicked( sender:UIButton ) {
@@ -113,21 +113,43 @@ class FindPartnerVC: UIViewController {
             return
         }
         
-        if (saved_user[0].id != 0) {
+        if (NSUserDefaults.standardUserDefaults().integerForKey("user_id") != 0) {
             return
         }
         
+        /* DEBUG
         for view in self.view.subviews{
             view.removeFromSuperview()
-        }
+        }*/
+        
         
         println(nameInput.text)
         println(self.fav_stage)
         println(self.fav_genre)
         
-        saved_user[0].name = nameInput.text
-        
         self.postNewUser(nameInput.text)
+        
+    }
+    
+    func postNewUser(name:String){
+        
+        let parameters = [
+            "id": "",
+            "name": name,
+            "partner_id": "",
+            "partner_found": 0,
+            "fav_stage": self.fav_stage,
+            "fav_genre": self.fav_genre
+        ]
+        
+        Alamofire.request(.POST, "http://student.howest.be/eliot.colinet/20142015/MA4/BADGET/api/users", parameters: parameters as? [String : AnyObject]).responseJSON{(_,_,data,_) in
+            var json = JSON(data!)
+            
+            NSUserDefaults.standardUserDefaults().setInteger(json["id"].intValue, forKey: "user_id")
+            NSUserDefaults.standardUserDefaults().synchronize()
+            
+            self.findPartner()
+        }
     }
     
     func findPartner(){
@@ -136,19 +158,80 @@ class FindPartnerVC: UIViewController {
             var json = JSON(data!)
             
             for Dict in json.arrayValue {
-                if ( self.fav_stage == Dict["fav_stage"].stringValue && self.fav_genre == Dict["fav_genre"].stringValue && Dict["partner_id"].intValue == 0 && Dict["id"].intValue != self.saved_user[0].id) {
-                    self.saved_user[0].partner_id = Dict["id"].intValue
-                    println("Partner_id : \(self.saved_user[0].partner_id)")
+                if ( self.fav_stage == Dict["fav_stage"].stringValue && self.fav_genre == Dict["fav_genre"].stringValue && Dict["partner_id"].intValue == 0 && Dict["id"].intValue != NSUserDefaults.standardUserDefaults().integerForKey("user_id")) {
+                    
+                    NSUserDefaults.standardUserDefaults().setInteger(Dict["id"].intValue, forKey: "partner_id")
+                    NSUserDefaults.standardUserDefaults().synchronize()
+                    let user_id = NSUserDefaults.standardUserDefaults().integerForKey("user_id")
+                    println("Partner_id : \(user_id)")
                 }
             }
-            if (self.saved_user[0].partner_id == 0){
+            if (NSUserDefaults.standardUserDefaults().integerForKey("partner_id") == 0){
                 println("geen partner gevonden...")
+                let noPartner = NoPartnerVC();
+                self.navigationController?.pushViewController(noPartner, animated: true)
             } else {
-                //Put partner_id (beide)
-                self.setPartners(self.saved_user[0].id, id2: self.saved_user[0].partner_id)
+                self.createUserLocation()
+                self.setPartners(NSUserDefaults.standardUserDefaults().integerForKey("user_id"), id2: NSUserDefaults.standardUserDefaults().integerForKey("partner_id"))
             }
         }
-        NSKeyedArchiver.archiveRootObject(saved_user, toFile: filename)
+    }
+    
+    func createUserLocation(){
+        
+        let parameters = [
+            "id": "",
+            "user_id": NSUserDefaults.standardUserDefaults().integerForKey("user_id"),
+            "latitude": "",
+            "longitude": ""
+        ]
+        
+        Alamofire.request(.POST, "http://student.howest.be/eliot.colinet/20142015/MA4/BADGET/api/locations", parameters: parameters as? [String : AnyObject]).responseJSON{(_,_,data,_) in
+            var json = JSON(data!)
+            
+            NSUserDefaults.standardUserDefaults().setInteger(json["id"].intValue, forKey: "loc_id")
+            NSUserDefaults.standardUserDefaults().synchronize()
+        }
+    }
+    
+    func setPartners(id1:Int, id2:Int){
+        
+        Alamofire.request(.GET, "http://student.howest.be/eliot.colinet/20142015/MA4/BADGET/api/users/\(id1)").responseJSON{(_,_,data,_) in
+            var json = JSON(data!)
+            
+            for Dict in json.arrayValue {
+                
+                let parameters = [
+                    "id": Dict["id"].intValue,
+                    "name": Dict["fav_stage"].stringValue,
+                    "partner_id": id2,
+                    "partner_found": 0,
+                    "fav_stage": Dict["fav_stage"].stringValue,
+                    "fav_genre": Dict["fav_genre"].stringValue
+                ]
+                Alamofire.request(.PUT, "http://student.howest.be/eliot.colinet/20142015/MA4/BADGET/api/users/\(id1)", parameters: parameters as? [String : AnyObject])
+            }
+        }
+        
+        Alamofire.request(.GET, "http://student.howest.be/eliot.colinet/20142015/MA4/BADGET/api/users/\(id2)").responseJSON{(_,_,data,_) in
+            var json = JSON(data!)
+            
+            for Dict in json.arrayValue {
+                
+                let parameters = [
+                    "id": Dict["id"].intValue,
+                    "name": Dict["fav_stage"].stringValue,
+                    "partner_id": id1,
+                    "partner_found": 0,
+                    "fav_stage": Dict["fav_stage"].stringValue,
+                    "fav_genre": Dict["fav_genre"].stringValue
+                ]
+                Alamofire.request(.PUT, "http://student.howest.be/eliot.colinet/20142015/MA4/BADGET/api/users/\(id2)", parameters: parameters as? [String : AnyObject])
+            }
+        }
+        
+        let compass = CompassVC();
+        self.navigationController?.pushViewController(compass, animated: true)
     }
     
     func stageButtonTouched(){
@@ -273,27 +356,19 @@ class FindPartnerVC: UIViewController {
     }
     
     override init(nibName nibNameOrNil:String?, bundle nibBundleOrNil:NSBundle?){
+        
         stageBtn = UIButton.buttonWithType(UIButtonType.System) as! UIButton
         genreBtn = UIButton.buttonWithType(UIButtonType.System) as! UIButton
         
         fav_stage = ""
         fav_genre = ""
         
-        let documentsPath = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)[0] as! String
-        let theFile = documentsPath.stringByAppendingPathComponent("users")
-        println(documentsPath)
-        if let loadedFile = NSKeyedUnarchiver.unarchiveObjectWithFile(theFile) as? [SavedUser]{
-            saved_user = loadedFile
-        }
-        else{
-            saved_user = [SavedUser]()
-        }
-        
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
 
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+       
     }
     
     func getAllUsers() {
@@ -317,27 +392,6 @@ class FindPartnerVC: UIViewController {
         }
     }
     
-    func postNewUser(name:String){
-        
-        let parameters = [
-            "id": "",
-            "name": name,
-            "partner_id": "",
-            "partner_found": 0,
-            "fav_stage": self.fav_stage,
-            "fav_genre": self.fav_genre
-        ]
-        
-        Alamofire.request(.POST, "http://student.howest.be/eliot.colinet/20142015/MA4/BADGET/api/users", parameters: parameters as? [String : AnyObject]).responseJSON{(_,_,data,_) in
-            var json = JSON(data!)
-            
-            self.saved_user[0].id = json["id"].intValue
-            println(self.saved_user[0].id)
-            
-            self.findPartner()
-        }
-    }
-    
     func putUser(id:Int, name:String, partner_id:Int, partner_found:Int, fav_stage:String, fav_genre:String){
         
         let parameters = [
@@ -352,59 +406,8 @@ class FindPartnerVC: UIViewController {
         Alamofire.request(.PUT, "http://student.howest.be/eliot.colinet/20142015/MA4/BADGET/api/users/\(id)", parameters: parameters as? [String : AnyObject])
     }
     
-    func setPartners(id1:Int, id2:Int){
-        
-        Alamofire.request(.GET, "http://student.howest.be/eliot.colinet/20142015/MA4/BADGET/api/users/\(id1)").responseJSON{(_,_,data,_) in
-            var json = JSON(data!)
-            
-            for Dict in json.arrayValue {
-                
-                let parameters = [
-                    "id": Dict["id"].intValue,
-                    "name": Dict["fav_stage"].stringValue,
-                    "partner_id": id2,
-                    "partner_found": 0,
-                    "fav_stage": Dict["fav_stage"].stringValue,
-                    "fav_genre": Dict["fav_genre"].stringValue
-                ]
-                Alamofire.request(.PUT, "http://student.howest.be/eliot.colinet/20142015/MA4/BADGET/api/users/\(id1)", parameters: parameters as? [String : AnyObject])
-                
-                let compass = CompassVC();
-                self.navigationController?.pushViewController(compass, animated: true)
-            }
-        }
-        
-        Alamofire.request(.GET, "http://student.howest.be/eliot.colinet/20142015/MA4/BADGET/api/users/\(id2)").responseJSON{(_,_,data,_) in
-            var json = JSON(data!)
-            
-            for Dict in json.arrayValue {
-                
-                let parameters = [
-                    "id": Dict["id"].intValue,
-                    "name": Dict["fav_stage"].stringValue,
-                    "partner_id": id1,
-                    "partner_found": 0,
-                    "fav_stage": Dict["fav_stage"].stringValue,
-                    "fav_genre": Dict["fav_genre"].stringValue
-                ]
-                Alamofire.request(.PUT, "http://student.howest.be/eliot.colinet/20142015/MA4/BADGET/api/users/\(id2)", parameters: parameters as? [String : AnyObject])
-            }
-        }
-        NSKeyedArchiver.archiveRootObject(saved_user, toFile: filename)
-    }
-    
     func deleteUser(id:Int){
         Alamofire.request(.DELETE, "http://student.howest.be/eliot.colinet/20142015/MA4/BADGET/api/users/\(id)")
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

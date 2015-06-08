@@ -14,6 +14,7 @@
 		73312F541B1C8BD5004218ED /* compassTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73312F531B1C8BD5004218ED /* compassTests.swift */; };
 		73312F5E1B1C8C07004218ED /* CompassVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73312F5D1B1C8C07004218ED /* CompassVC.swift */; };
 		73312F611B1C8D60004218ED /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73312F601B1C8D60004218ED /* CoreLocation.framework */; };
+		733291CE1B25BC5E0099ED06 /* NoPartnerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733291CD1B25BC5E0099ED06 /* NoPartnerVC.swift */; };
 		73448F1A1B1CB78D001385FE /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73448F191B1CB78D001385FE /* View.swift */; };
 		734AA7A61B1DCE4E00561BEC /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 734AA79F1B1DCE2100561BEC /* Alamofire.framework */; };
 		734AA7A81B1DCE6F00561BEC /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734AA7A71B1DCE6F00561BEC /* SwiftyJSON.swift */; };
@@ -95,6 +96,7 @@
 		73312F531B1C8BD5004218ED /* compassTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = compassTests.swift; sourceTree = "<group>"; };
 		73312F5D1B1C8C07004218ED /* CompassVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompassVC.swift; sourceTree = "<group>"; };
 		73312F601B1C8D60004218ED /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		733291CD1B25BC5E0099ED06 /* NoPartnerVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoPartnerVC.swift; sourceTree = "<group>"; };
 		73448F191B1CB78D001385FE /* View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		734AA7971B1DCE2100561BEC /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = "Alamofire-master/Alamofire.xcodeproj"; sourceTree = "<group>"; };
 		734AA7A71B1DCE6F00561BEC /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 				73DCD11B1B20A8DB000EB086 /* NavViewController.swift */,
 				73312F5D1B1C8C07004218ED /* CompassVC.swift */,
 				73DCD1241B20AA2A000EB086 /* FindPartnerVC.swift */,
+				733291CD1B25BC5E0099ED06 /* NoPartnerVC.swift */,
 				734AA7A71B1DCE6F00561BEC /* SwiftyJSON.swift */,
 				73448F191B1CB78D001385FE /* View.swift */,
 				731713771B20543200676F5F /* Reachability.swift */,
@@ -339,6 +342,7 @@
 			files = (
 				73312F5E1B1C8C07004218ED /* CompassVC.swift in Sources */,
 				73312F431B1C8BD5004218ED /* AppDelegate.swift in Sources */,
+				733291CE1B25BC5E0099ED06 /* NoPartnerVC.swift in Sources */,
 				73448F1A1B1CB78D001385FE /* View.swift in Sources */,
 				731713781B20543200676F5F /* Reachability.swift in Sources */,
 				73DCD1291B20AAFE000EB086 /* UsersData.swift in Sources */,
