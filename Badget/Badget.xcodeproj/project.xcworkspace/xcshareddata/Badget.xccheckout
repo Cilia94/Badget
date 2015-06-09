@@ -20,7 +20,7 @@
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>67620B5EFA902936DF04070AF595B76AB0333747</key>
-		<string>../../../Badget/Alamofire/</string>
+		<string>../../../Badget/Alamofire</string>
 		<key>9D9328AA426ED86F6A32BF61FB892FCBC13203CD</key>
 		<string>../../..</string>
 	</dict>

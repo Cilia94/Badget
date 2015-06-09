@@ -130,7 +130,6 @@ class CompassVC: UIViewController, CLLocationManagerDelegate {
         }
         alert.addAction(okAction)
         self.presentViewController(alert, animated: true, completion: nil)
-        
     }
     
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {

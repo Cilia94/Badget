@@ -96,20 +96,15 @@ class FindPartnerVC: UIViewController {
         var error = 0
         //Validation
         if (nameInput.text == "") {
-            //Foutmelding weergeven
-            error++
+            validationAlert("Login mislukt", message: "Gelieve uw naam in te vullen")
+            return
         }
         if (self.fav_stage == "") {
-            //Foutmelding weergeven
-            error++
+            validationAlert("Login mislukt", message: "Gelieve uw favoriete podium te selecteren")
+            return
         }
         if (self.fav_genre == "") {
-            //Foutmelding weergeven
-            error++
-        }
-        
-        if (error > 0) {
-            error = 0
+            validationAlert("Login mislukt", message: "Gelieve uw favoriete genre te selecteren")
             return
         }
         
@@ -348,6 +343,19 @@ class FindPartnerVC: UIViewController {
         
         self.presentViewController(alert, animated: true, completion: nil)
         
+    }
+    
+    func validationAlert(title:String, message:String) {
+        let alert = UIAlertController(
+            title: title,
+            message: message,
+            preferredStyle: UIAlertControllerStyle.Alert
+        )
+        let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default) { (action) -> Void in
+            // Code
+        }
+        alert.addAction(okAction)
+        self.presentViewController(alert, animated: true, completion: nil)
     }
 
     override func didReceiveMemoryWarning() {
