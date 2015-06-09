@@ -1,0 +1,418 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		863A69751AF9016B0079A045 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 863A69741AF9016B0079A045 /* AppDelegate.swift */; };
+		863A69771AF9016B0079A045 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 863A69761AF9016B0079A045 /* Images.xcassets */; };
+		863A697A1AF9016B0079A045 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 863A69781AF9016B0079A045 /* LaunchScreen.xib */; };
+		863A69861AF9016B0079A045 /* FindTheSnoetjeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 863A69851AF9016B0079A045 /* FindTheSnoetjeTests.swift */; };
+		863A69901AF9017B0079A045 /* SnoetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 863A698F1AF9017A0079A045 /* SnoetViewController.swift */; };
+		863A69921AF901B80079A045 /* SnoetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 863A69911AF901B80079A045 /* SnoetView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		863A69801AF9016B0079A045 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 863A69671AF9016B0079A045 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 863A696E1AF9016B0079A045;
+			remoteInfo = FindTheSnoetje;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		863A696F1AF9016B0079A045 /* FindTheSnoetje.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FindTheSnoetje.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		863A69731AF9016B0079A045 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		863A69741AF9016B0079A045 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		863A69761AF9016B0079A045 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		863A69791AF9016B0079A045 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		863A697F1AF9016B0079A045 /* FindTheSnoetjeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FindTheSnoetjeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		863A69841AF9016B0079A045 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		863A69851AF9016B0079A045 /* FindTheSnoetjeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindTheSnoetjeTests.swift; sourceTree = "<group>"; };
+		863A698F1AF9017A0079A045 /* SnoetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnoetViewController.swift; sourceTree = "<group>"; };
+		863A69911AF901B80079A045 /* SnoetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnoetView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		863A696C1AF9016B0079A045 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		863A697C1AF9016B0079A045 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		863A69661AF9016B0079A045 = {
+			isa = PBXGroup;
+			children = (
+				863A69711AF9016B0079A045 /* FindTheSnoetje */,
+				863A69821AF9016B0079A045 /* FindTheSnoetjeTests */,
+				863A69701AF9016B0079A045 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		863A69701AF9016B0079A045 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				863A696F1AF9016B0079A045 /* FindTheSnoetje.app */,
+				863A697F1AF9016B0079A045 /* FindTheSnoetjeTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		863A69711AF9016B0079A045 /* FindTheSnoetje */ = {
+			isa = PBXGroup;
+			children = (
+				863A69741AF9016B0079A045 /* AppDelegate.swift */,
+				863A698F1AF9017A0079A045 /* SnoetViewController.swift */,
+				863A69911AF901B80079A045 /* SnoetView.swift */,
+				863A69761AF9016B0079A045 /* Images.xcassets */,
+				863A69781AF9016B0079A045 /* LaunchScreen.xib */,
+				863A69721AF9016B0079A045 /* Supporting Files */,
+			);
+			path = FindTheSnoetje;
+			sourceTree = "<group>";
+		};
+		863A69721AF9016B0079A045 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				863A69731AF9016B0079A045 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		863A69821AF9016B0079A045 /* FindTheSnoetjeTests */ = {
+			isa = PBXGroup;
+			children = (
+				863A69851AF9016B0079A045 /* FindTheSnoetjeTests.swift */,
+				863A69831AF9016B0079A045 /* Supporting Files */,
+			);
+			path = FindTheSnoetjeTests;
+			sourceTree = "<group>";
+		};
+		863A69831AF9016B0079A045 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				863A69841AF9016B0079A045 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		863A696E1AF9016B0079A045 /* FindTheSnoetje */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 863A69891AF9016B0079A045 /* Build configuration list for PBXNativeTarget "FindTheSnoetje" */;
+			buildPhases = (
+				863A696B1AF9016B0079A045 /* Sources */,
+				863A696C1AF9016B0079A045 /* Frameworks */,
+				863A696D1AF9016B0079A045 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FindTheSnoetje;
+			productName = FindTheSnoetje;
+			productReference = 863A696F1AF9016B0079A045 /* FindTheSnoetje.app */;
+			productType = "com.apple.product-type.application";
+		};
+		863A697E1AF9016B0079A045 /* FindTheSnoetjeTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 863A698C1AF9016B0079A045 /* Build configuration list for PBXNativeTarget "FindTheSnoetjeTests" */;
+			buildPhases = (
+				863A697B1AF9016B0079A045 /* Sources */,
+				863A697C1AF9016B0079A045 /* Frameworks */,
+				863A697D1AF9016B0079A045 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				863A69811AF9016B0079A045 /* PBXTargetDependency */,
+			);
+			name = FindTheSnoetjeTests;
+			productName = FindTheSnoetjeTests;
+			productReference = 863A697F1AF9016B0079A045 /* FindTheSnoetjeTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		863A69671AF9016B0079A045 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0630;
+				ORGANIZATIONNAME = devine;
+				TargetAttributes = {
+					863A696E1AF9016B0079A045 = {
+						CreatedOnToolsVersion = 6.3.1;
+					};
+					863A697E1AF9016B0079A045 = {
+						CreatedOnToolsVersion = 6.3.1;
+						TestTargetID = 863A696E1AF9016B0079A045;
+					};
+				};
+			};
+			buildConfigurationList = 863A696A1AF9016B0079A045 /* Build configuration list for PBXProject "FindTheSnoetje" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 863A69661AF9016B0079A045;
+			productRefGroup = 863A69701AF9016B0079A045 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				863A696E1AF9016B0079A045 /* FindTheSnoetje */,
+				863A697E1AF9016B0079A045 /* FindTheSnoetjeTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		863A696D1AF9016B0079A045 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				863A697A1AF9016B0079A045 /* LaunchScreen.xib in Resources */,
+				863A69771AF9016B0079A045 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		863A697D1AF9016B0079A045 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		863A696B1AF9016B0079A045 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				863A69921AF901B80079A045 /* SnoetView.swift in Sources */,
+				863A69901AF9017B0079A045 /* SnoetViewController.swift in Sources */,
+				863A69751AF9016B0079A045 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		863A697B1AF9016B0079A045 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				863A69861AF9016B0079A045 /* FindTheSnoetjeTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		863A69811AF9016B0079A045 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 863A696E1AF9016B0079A045 /* FindTheSnoetje */;
+			targetProxy = 863A69801AF9016B0079A045 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		863A69781AF9016B0079A045 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				863A69791AF9016B0079A045 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		863A69871AF9016B0079A045 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		863A69881AF9016B0079A045 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		863A698A1AF9016B0079A045 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = FindTheSnoetje/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		863A698B1AF9016B0079A045 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = FindTheSnoetje/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		863A698D1AF9016B0079A045 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = FindTheSnoetjeTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FindTheSnoetje.app/FindTheSnoetje";
+			};
+			name = Debug;
+		};
+		863A698E1AF9016B0079A045 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = FindTheSnoetjeTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FindTheSnoetje.app/FindTheSnoetje";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		863A696A1AF9016B0079A045 /* Build configuration list for PBXProject "FindTheSnoetje" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				863A69871AF9016B0079A045 /* Debug */,
+				863A69881AF9016B0079A045 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		863A69891AF9016B0079A045 /* Build configuration list for PBXNativeTarget "FindTheSnoetje" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				863A698A1AF9016B0079A045 /* Debug */,
+				863A698B1AF9016B0079A045 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		863A698C1AF9016B0079A045 /* Build configuration list for PBXNativeTarget "FindTheSnoetjeTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				863A698D1AF9016B0079A045 /* Debug */,
+				863A698E1AF9016B0079A045 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 863A69671AF9016B0079A045 /* Project object */;
+}
