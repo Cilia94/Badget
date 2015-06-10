@@ -12,18 +12,16 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    var snoetVC:SnoetViewController?
+    var overviewVC:TrakteerOverviewVC?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         // Override point for customization after application launch.
         
-        snoetVC = SnoetViewController(nibName: nil, bundle: nil)
+        overviewVC = TrakteerOverviewVC(nibName: nil, bundle: nil)
         
-        let navController = UINavigationController(rootViewController: snoetVC!)
-        
-        window?.rootViewController = navController
+        window?.rootViewController = overviewVC
         
         
         self.window!.backgroundColor = UIColor.whiteColor()

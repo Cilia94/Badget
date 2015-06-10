@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SnoetViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class TrakteerCheckVC: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     // MARK: - IBOutlets
     
@@ -25,6 +25,8 @@ class SnoetViewController: UIViewController, UIImagePickerControllerDelegate, UI
     var imageView:UIImageView!
     var ratio:Float!
     var imageInPortrait:Bool!
+    var vraag:UILabel!
+    var featuresList:[CGRect] = []
     
     // MARK: - Initializers methods
     
@@ -39,7 +41,16 @@ class SnoetViewController: UIViewController, UIImagePickerControllerDelegate, UI
         
         super.viewDidLoad()
         
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Camera, target: self, action: "cameraButtonTouched");
+        self.view.backgroundColor = UIColor.orangeColor()
+        
+        self.vraag = UILabel(frame: CGRectMake(160, 375, 300, 50))
+        self.vraag.center = CGPoint(x: 160, y: 375)
+        self.vraag.numberOfLines = 0
+        self.view.addSubview(self.vraag)
+        
+        self.createButton("Nee", x: 100, y: 400, w: 75, h: 50, center: true, function: "cameraButtonTouched")
+        
+        self.createButton("Ja", x: 220, y: 400, w: 75, h: 50, center: true, function: "toRandomVC")
         
     }
     
@@ -68,12 +79,17 @@ class SnoetViewController: UIViewController, UIImagePickerControllerDelegate, UI
         
     }
     
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
+    func toRandomVC(){
         
-        let image = info[UIImagePickerControllerOriginalImage] as! UIImage
+        // NAVIGATIONController DEBUG
+        var randomVC = TrakteerRandomVC()
+        self.presentViewController(randomVC, animated: true, completion: nil)
         
-        picker.dismissViewControllerAnimated(true, completion: nil)
+        randomVC.setImage(self.imageView.image!, features: self.featuresList)
         
+    }
+    
+    func setImage(image:UIImage) {
         self.ratio = Float(image.size.width) / 320
         
         self.imageView = UIImageView(frame: CGRectMake(0, 100, 320, 240))
@@ -91,14 +107,17 @@ class SnoetViewController: UIViewController, UIImagePickerControllerDelegate, UI
         
         self.view.addSubview(self.imageView)
         
+        self.detectFaces()
+    }
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
         
-        let detectFacesButton = UIButton.buttonWithType(UIButtonType.System) as! UIButton
-        detectFacesButton.setTitle("Detect snoetjes", forState: UIControlState.Normal)
-        detectFacesButton.frame = CGRect(x: 0, y: 0, width: 960, height: 1280.0)
-        detectFacesButton.center = CGPoint(x: 320/2, y: 400 )
-        self.view.addSubview(detectFacesButton)
+        let image = info[UIImagePickerControllerOriginalImage] as! UIImage
         
-        detectFacesButton.addTarget(self, action: "detectSnoetjesButtonClicked:", forControlEvents: UIControlEvents.TouchUpInside)
+        picker.dismissViewControllerAnimated(true, completion: nil)
+        
+        self.setImage(image)
+        
         
         //NSTimer.scheduledTimerWithTimeInterval(5, target: self, selector: "tickHandler", userInfo: nil, repeats: false)
     }
@@ -109,7 +128,21 @@ class SnoetViewController: UIViewController, UIImagePickerControllerDelegate, UI
         
     }
     
-    func detectSnoetjesButtonClicked( sender:UIButton ) {
+    func createButton(btnTitle:String, x:Int, y:Int, w:Int, h:Int, center:Bool, function:String){
+        
+        let button = UIButton.buttonWithType(UIButtonType.System) as! UIButton
+        button.setTitle(btnTitle, forState: UIControlState.Normal)
+        button.frame = CGRect(x: x, y: y, width: w, height: h)
+        if (center == true){
+            button.center = CGPoint(x: x, y: y )
+        }
+        self.view.addSubview(button)
+        
+        button.addTarget(self, action: Selector(function), forControlEvents: UIControlEvents.TouchUpInside)
+        
+    }
+    
+    func detectFaces() {
         
         println("[SnoetVC] Detect button clicked")
         
@@ -122,12 +155,14 @@ class SnoetViewController: UIViewController, UIImagePickerControllerDelegate, UI
         println(self.imageView.image!.size.width)
         println(self.imageView.image!.size.height)
         
+        self.featuresList = []
         
         if (self.imageInPortrait == true) {
             if (self.imageView.image!.size.width == 960){
                 println("Front Camera PORTRAIT")
                 let features = detector.featuresInImage(image, options: [CIDetectorImageOrientation:5])
-            
+                self.vraag.text = "Er zijn \(features.count) personen gedetecteerd op deze foto. Is iedereen gedetecteerd?"
+                
                 for feature in features {
                 
                     var featureBounds = feature.bounds
@@ -141,14 +176,15 @@ class SnoetViewController: UIViewController, UIImagePickerControllerDelegate, UI
                     featureBounds.size.height = feature.bounds.size.height / CGFloat(self.ratio)
                     
                     self.drawFaceRecognitionBox(featureBounds)
+                    self.featuresList.append(featureBounds)
                 }
             } else {
                 println("Back Camera PORTRAIT")
                 let features = detector.featuresInImage(image, options: [CIDetectorImageOrientation:5])
-                println(features.count)
+                self.vraag.text = "Er zijn \(features.count) personen gedetecteerd op deze foto. Is iedereen gedetecteerd?"
             
                 for feature in features {
-                
+                    
                     var featureBounds = feature.bounds
                 
                     var startY = self.imageView.bounds.size.height
@@ -160,6 +196,7 @@ class SnoetViewController: UIViewController, UIImagePickerControllerDelegate, UI
                     featureBounds.size.height = feature.bounds.size.height / CGFloat(self.ratio)
                     
                     self.drawFaceRecognitionBox(featureBounds)
+                    self.featuresList.append(featureBounds)
                 }
             
             }
@@ -167,6 +204,7 @@ class SnoetViewController: UIViewController, UIImagePickerControllerDelegate, UI
             if (self.imageView.image!.size.width == 1280){
                 println("Front Camera LANDSCAPE")
                 let features = detector.featuresInImage(image, options: [CIDetectorImageOrientation:4])
+                self.vraag.text = "Er zijn \(features.count) personen gedetecteerd op deze foto. Is iedereen gedetecteerd?"
                 
                 for feature in features {
                     
@@ -182,9 +220,11 @@ class SnoetViewController: UIViewController, UIImagePickerControllerDelegate, UI
                     featureBounds.size.height = feature.bounds.size.height / CGFloat(self.ratio)
                     
                     self.drawFaceRecognitionBox(featureBounds)
+                    self.featuresList.append(featureBounds)
                 }
             } else {
                 var features = detector.featuresInImage(image, options: [CIDetectorImageOrientation:1])
+                self.vraag.text = "Er zijn \(features.count) personen gedetecteerd op deze foto. Is iedereen gedetecteerd?"
                 println("Back Camera LANDSCAPE : \(features.count) features")
                 
                 for feature in features {
@@ -200,6 +240,7 @@ class SnoetViewController: UIViewController, UIImagePickerControllerDelegate, UI
                     featureBounds.size.height = feature.bounds.size.height / CGFloat(self.ratio)
                     
                     self.drawFaceRecognitionBox(featureBounds)
+                    self.featuresList.append(featureBounds)
                 }
                 
             }
