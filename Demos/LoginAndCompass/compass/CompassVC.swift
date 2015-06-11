@@ -50,6 +50,7 @@ class CompassVC: UIViewController, CLLocationManagerDelegate {
     var partnerLon:Double = 0
     var lastRotation:Double = 0
     var lastHeading:Double = 0
+    var partnerName:String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -168,7 +169,9 @@ class CompassVC: UIViewController, CLLocationManagerDelegate {
         }
         if (abs(self.lastRotation - partnerDegrees) > 5) {
             //println("Rotate phone \(partnerDegrees)°!")
-            self.theView.imageView.transform = CGAffineTransformMakeRotation(CGFloat(2*pi*partnerDegrees/360))
+            UIView.animateWithDuration(1, animations: {
+                self.theView.imageView.transform = CGAffineTransformMakeRotation(CGFloat(2*self.pi*self.partnerDegrees/360))
+            })
             self.lastRotation = partnerDegrees
         } else {
             //println("Change to small to rotate! \(partnerDegrees)°")
@@ -196,6 +199,7 @@ class CompassVC: UIViewController, CLLocationManagerDelegate {
             
             self.partnerLat = json["latitude"].doubleValue
             self.partnerLon = json["longitude"].doubleValue
+            self.partnerName = json["name"].stringValue
             
             self.GPSdegrees = self.compass(self.userLat, y1: self.userLon, x2:self.partnerLat, y2:self.partnerLon)
             self.distLabel.text = "\(self.calcDist())m"

@@ -25,19 +25,7 @@ class FindPartnerVC: UIViewController {
         
         self.view.backgroundColor = UIColor.whiteColor()
         
-        if (NSUserDefaults.standardUserDefaults().integerForKey("user_id") == 0) {
-            self.login()
-        } else {
-            if (NSUserDefaults.standardUserDefaults().integerForKey("partner_id") == 0) {
-                let alertLabel = UILabel(frame: CGRectMake(50, 75, 500, 50))
-                alertLabel.text = "!!! User logged in but needs partner !!!"
-                self.view.addSubview(alertLabel)
-            } else {
-                let alertLabel = UILabel(frame: CGRectMake(50, 75, 500, 50))
-                alertLabel.text = "!!! User already logged in with partner !!!"
-                self.view.addSubview(alertLabel)
-            }
-        }
+        self.login()
         
         var tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "DismissKeyboard")
         view.addGestureRecognizer(tap)
