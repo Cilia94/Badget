@@ -28,26 +28,26 @@ class InfoChallenge: UIView {
         let title = UILabel(frame: CGRectMake(65, 90, 200, 50))
         title.text = naamChallenge
         title.font = font
-        title.textColor = UIColor(red: 92/225, green: 135/225, blue: 185/225, alpha: 1)
+        title.textColor = UIColor(red: 73/225, green: 118/225, blue: 171/225, alpha: 1)
         
         self.addSubview(title)
         
         var img = UIImage(named: naamImage!)
         var imv = UIImageView(image: img)
-        imv.frame = CGRectMake(30, 140, img!.size.width, img!.size.height)
+        imv.frame = CGRectMake(30, 120, img!.size.width, img!.size.height)
         self.addSubview(imv)
         
         
         
         
     }
-
+    
     /*
     // Only override drawRect: if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
     override func drawRect(rect: CGRect) {
-        // Drawing code
+    // Drawing code
     }
     */
-
+    
 }

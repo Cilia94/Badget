@@ -10,7 +10,7 @@ import UIKit
 
 class TitelAndSub: UIView {
     
-     func attributedString(string text:String, withFont font:UIFont!, kerning: CGFloat!, andColor color:UIColor!) -> NSAttributedString?  {
+    func attributedString(string text:String, withFont font:UIFont!, kerning: CGFloat!, andColor color:UIColor!) -> NSAttributedString?  {
         return NSAttributedString(string: text, attributes: [NSKernAttributeName:kerning, NSFontAttributeName:font, NSForegroundColorAttributeName:color])
     }
     
@@ -22,7 +22,7 @@ class TitelAndSub: UIView {
         let imgv = UIImageView(image: img)
         self.addSubview(imgv)
         
-
+        
         
         let f1 = UIFont(name: "ManusTrial", size: 40)
         let f2 = UIFont(name: "DKBlackBamboo", size: 40)
@@ -33,7 +33,7 @@ class TitelAndSub: UIView {
         let first = titel! as NSString
         let bold = "!" as NSString
         let range1 = titel?.rangeOfString(titel!)
-      
+        
         
         let full = (first as String) + (bold as String)
         
@@ -56,13 +56,13 @@ class TitelAndSub: UIView {
         self.addSubview(subl)
         
     }
-
+    
     /*
     // Only override drawRect: if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
     override func drawRect(rect: CGRect) {
-        // Drawing code
+    // Drawing code
     }
     */
-
+    
 }

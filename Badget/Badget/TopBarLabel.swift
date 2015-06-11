@@ -11,7 +11,7 @@ import UIKit
 class TopBarLabel: UILabel {
     
     convenience init(tekst:String?, tekstBold:String?, frame:CGRect?){
-
+        
         
         self.init(frame:frame!);
         
@@ -40,11 +40,11 @@ class TopBarLabel: UILabel {
         attString.addAttribute(NSFontAttributeName, value: f1!, range: NSMakeRange(0, first.length))
         attString.addAttribute(NSFontAttributeName, value: f2!, range: NSMakeRange(first.length, bold.length+1))
         
-            
-
         
         
-      
+        
+        
+        
         txtView.attributedText = attString
         
         //txtView.font = UIFont(name: "Avenir Next", size: 20)
@@ -58,13 +58,13 @@ class TopBarLabel: UILabel {
     
     
     
-
+    
     /*
     // Only override drawRect: if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
     override func drawRect(rect: CGRect) {
-        // Drawing code
+    // Drawing code
     }
     */
-
+    
 }

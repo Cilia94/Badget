@@ -9,15 +9,17 @@
 import UIKit
 
 class Challenge1View: UIView {
-
+    
     let imageView:UIImageView
     var counter:UILabel
+    var fillValue:Float?
     
     override init(frame: CGRect) {
         
         
         
-        self.imageView = UIImageView(frame: CGRectMake(40, 90, 250, 250))
+        
+        self.imageView = UIImageView(frame: CGRectMake(80, 115, 138+25, 241+40))
         self.counter = UILabel(frame: CGRectMake(60, 405, 80, 40))
         
         super.init(frame: frame)
@@ -51,10 +53,33 @@ class Challenge1View: UIView {
         glassview.frame = CGRectMake(180, 350, glass!.size.width/2, glass!.size.height/2)
         self.addSubview(glassview)
         
+        
+        
         let glassfill = UIImage(named: "glassfill")
-        let glassfillview = UIImageView(image: glassfill)
-        glassfillview.frame = CGRectMake(180, 350, glassfill!.size.width/2, glassfill!.size.height/2)
-        self.addSubview(glassfillview)
+        //let glassfillview = UIImageView(image: glassfill)
+        //glassfillview.frame = CGRectMake(180, 350, glassfill!.size.width/2, glassfill!.size.height/2)
+        
+        let glasslayer = CALayer()
+        glasslayer.contents = glassfill?.CGImage
+        glasslayer.bounds = CGRectMake(0, 0, glassfill!.size.width/2, glassfill!.size.height/2)
+        glasslayer.position.x = 180 + glassfill!.size.width/4
+        glasslayer.position.y = 350 + glassfill!.size.height/4
+        
+        
+        
+        //self.addSubview(glassfillview)
+        
+        //var maskl = CAShapeLayer()
+        //
+        //        self.fillValue = 170.0
+        //    var fillV = self.fillValue
+        //        maskl.path = UIBezierPath(rect: CGRectMake(0, fillV! , glass!.size.width/2, glass!.size.height/2)).CGPath
+        //        maskl.fillColor = UIColor.whiteColor().CGColor
+        
+        self.layer.addSublayer(glasslayer)
+        //self.layer.addSublayer(maskl)
+        //glasslayer.mask = maskl
+        //self.layer.addSublayer(glasslayer)
         
         
         //self.counter.backgroundColor = UIColor.redColor()

@@ -52,7 +52,7 @@ class Challenge1ViewController: UIViewController, CLLocationManagerDelegate {
     var partnerLon:Double = 0
     var lastRotation:Double = 0
     var lastHeading:Double = 0
-
+    
     
     
     override func viewDidLoad() {
@@ -75,29 +75,29 @@ class Challenge1ViewController: UIViewController, CLLocationManagerDelegate {
         
         self.view = Challenge1View(frame: UIScreen.mainScreen().bounds)
         
-//        self.distLabel = UILabel(frame: CGRectMake(100, 250, 500, 50))
-//        self.distLabel.text = "Afstand!"
-//        self.view.addSubview(self.distLabel)
-//        
-//        self.headingLabel = UILabel(frame: CGRectMake(100, 275, 500, 50))
-//        self.headingLabel.text = "Heading!"
-//        self.view.addSubview(self.headingLabel)
-//        
-//        self.heading2Label = UILabel(frame: CGRectMake(100, 300, 500, 50))
-//        self.heading2Label.text = "Heading 2!"
-//        self.view.addSubview(self.heading2Label)
-//        
-//        self.locationLabel = UILabel(frame: CGRectMake(50, 325, 500, 50))
-//        self.locationLabel.text = "Location!"
-//        self.view.addSubview(self.locationLabel)
-//        
-//        self.partnerLabel = UILabel(frame: CGRectMake(50, 350, 500, 50))
-//        self.partnerLabel.text = "Partner!"
-//        self.view.addSubview(self.partnerLabel)
-//        
-//        self.degreesLabel = UILabel(frame: CGRectMake(100, 375, 500, 50))
-//        self.degreesLabel.text = "Degrees!"
-//        self.view.addSubview(self.degreesLabel)
+        //        self.distLabel = UILabel(frame: CGRectMake(100, 250, 500, 50))
+        //        self.distLabel.text = "Afstand!"
+        //        self.view.addSubview(self.distLabel)
+        //
+        //        self.headingLabel = UILabel(frame: CGRectMake(100, 275, 500, 50))
+        //        self.headingLabel.text = "Heading!"
+        //        self.view.addSubview(self.headingLabel)
+        //
+        //        self.heading2Label = UILabel(frame: CGRectMake(100, 300, 500, 50))
+        //        self.heading2Label.text = "Heading 2!"
+        //        self.view.addSubview(self.heading2Label)
+        //
+        //        self.locationLabel = UILabel(frame: CGRectMake(50, 325, 500, 50))
+        //        self.locationLabel.text = "Location!"
+        //        self.view.addSubview(self.locationLabel)
+        //
+        //        self.partnerLabel = UILabel(frame: CGRectMake(50, 350, 500, 50))
+        //        self.partnerLabel.text = "Partner!"
+        //        self.view.addSubview(self.partnerLabel)
+        //
+        //        self.degreesLabel = UILabel(frame: CGRectMake(100, 375, 500, 50))
+        //        self.degreesLabel.text = "Degrees!"
+        //        self.view.addSubview(self.degreesLabel)
         
         if reachability.isReachable() {
         } else {
@@ -153,10 +153,10 @@ class Challenge1ViewController: UIViewController, CLLocationManagerDelegate {
         
         GPSdegrees = self.compass(self.userLat, y1: self.userLon, x2:self.partnerLat, y2:self.partnerLon)
         
-//        self.theView.counter.text = "\(self.calcDist())m"
-//        self.theView.addSubview(self.theView.counter)
+        //        self.theView.counter.text = "\(self.calcDist())m"
+        //        self.theView.addSubview(self.theView.counter)
         
-         //let counter = UILabel(frame: CGRectMake(60, 405, 80, 40))
+        //let counter = UILabel(frame: CGRectMake(60, 405, 80, 40))
         //counter.text = "\(self.calcDist())m"
         //counter.backgroundColor = UIColor.blueColor()
         //self.view.addSubview(counter)
@@ -258,5 +258,5 @@ class Challenge1ViewController: UIViewController, CLLocationManagerDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
 }

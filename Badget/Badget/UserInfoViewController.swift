@@ -30,15 +30,15 @@ class UserInfoViewController: UIViewController {
             return self.view as! UserInfoView
         }
     }
-
     
-
-        override func shouldAutorotate() -> Bool {
-            return true
-        }
+    
+    
+    override func shouldAutorotate() -> Bool {
+        return true
+    }
     
     override func viewDidLoad() {
-       println("view load")
+        println("view load")
         
         super.viewDidLoad()
         
@@ -77,6 +77,7 @@ class UserInfoViewController: UIViewController {
         saved_user[0].name = self.theView.nameInput!.text
         
         self.postNewUser(self.theView.nameInput!.text)
+        self.navigationController?.pushViewController(ViewController(), animated: true)
         
         //save on phone
         
@@ -223,8 +224,8 @@ class UserInfoViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-   
+    
+    
     
     override init(nibName nibNameOrNil:String?, bundle nibBundleOrNil:NSBundle?){
         
@@ -270,26 +271,26 @@ class UserInfoViewController: UIViewController {
             
             
             stageBtn.setTitle("Select stage...", forState: UIControlState.Normal)
-            stageBtn.frame = CGRect(x: -15, y: 380, width: 250, height: 50)
+            stageBtn.frame = CGRect(x: -15, y: 400, width: 250, height: 50)
             self.view.addSubview(stageBtn)
             stageBtn.addTarget(self, action: "stageButtonTouched", forControlEvents: UIControlEvents.TouchUpInside)
             
-
+            
             
             genreBtn.setTitle("Select genre...", forState: UIControlState.Normal)
-            genreBtn.frame = CGRect(x: -15, y: 275, width: 250, height: 50)
+            genreBtn.frame = CGRect(x: -15, y: 295, width: 250, height: 50)
             self.view.addSubview(genreBtn)
             genreBtn.addTarget(self, action: "genreButtonTouched", forControlEvents: UIControlEvents.TouchUpInside)
             
-//            let sendBtn = UIButton.buttonWithType(UIButtonType.System) as! UIButton
-//            sendBtn.setTitle("Send...", forState: UIControlState.Normal)
-//            sendBtn.frame = CGRect(x: 50, y: 350, width: 250, height: 50)
-//            self.view.addSubview(sendBtn)
+            //            let sendBtn = UIButton.buttonWithType(UIButtonType.System) as! UIButton
+            //            sendBtn.setTitle("Send...", forState: UIControlState.Normal)
+            //            sendBtn.frame = CGRect(x: 50, y: 350, width: 250, height: 50)
+            //            self.view.addSubview(sendBtn)
             
             var sendb = pageButton(theViewC: self, titel: "Send", targetfunction: "n")
             //sendb.addTarget(self, action: "sendClicked:", forControlEvents: UIControlEvents.TouchUpInside)
             
-        // sendBtn.addTarget(self, action: "sendClicked:", forControlEvents: UIControlEvents.TouchUpInside)
+            // sendBtn.addTarget(self, action: "sendClicked:", forControlEvents: UIControlEvents.TouchUpInside)
         } else {
             if (saved_user[0].partner_id == 0) {
                 let alertLabel = UILabel(frame: CGRectMake(50, 75, 500, 50))
@@ -301,20 +302,20 @@ class UserInfoViewController: UIViewController {
                 self.view.addSubview(alertLabel)
             }
         }
-
- 
+        
+        
     }
     
     
-
+    
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-//    override func supportedInterfaceOrientations() -> Int {
-//        return Int(UIInterfaceOrientationMask.Landscape.rawValue)
-//    }
-
+    //    override func supportedInterfaceOrientations() -> Int {
+    //        return Int(UIInterfaceOrientationMask.Landscape.rawValue)
+    //    }
+    
     
     func getAllUsers() {
         
@@ -413,19 +414,19 @@ class UserInfoViewController: UIViewController {
     func deleteUser(id:Int){
         Alamofire.request(.DELETE, "http://student.howest.be/eliot.colinet/20142015/MA4/BADGET/api/users/\(id)")
     }
-
     
-
+    
+    
     
     func DismissKeyboard(){
         //Causes the view (or one of its embedded text fields) to resign the first responder status.
         view.endEditing(true)
     }
-
-  
     
-
-
-
-
+    
+    
+    
+    
+    
+    
 }
