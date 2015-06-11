@@ -87,11 +87,11 @@ class CompassVC: UIViewController, CLLocationManagerDelegate {
         self.heading2Label.text = "Heading 2!"
         self.view.addSubview(self.heading2Label)
         
-        self.locationLabel = UILabel(frame: CGRectMake(50, 325, 500, 50))
+        self.locationLabel = UILabel(frame: CGRectMake(10, 325, 500, 50))
         self.locationLabel.text = "Location!"
         self.view.addSubview(self.locationLabel)
         
-        self.partnerLabel = UILabel(frame: CGRectMake(50, 350, 500, 50))
+        self.partnerLabel = UILabel(frame: CGRectMake(10, 350, 500, 50))
         self.partnerLabel.text = "Partner!"
         self.view.addSubview(self.partnerLabel)
         
@@ -194,10 +194,8 @@ class CompassVC: UIViewController, CLLocationManagerDelegate {
         Alamofire.request(.GET, "http://student.howest.be/eliot.colinet/20142015/MA4/BADGET/api/locations/\(partner_id)").responseJSON{(_,_,data,_) in
             var json = JSON(data!)
             
-            for Dict in json.arrayValue {
-                self.partnerLat = Dict["latitude"].doubleValue
-                self.partnerLon = Dict["longitude"].doubleValue
-            }
+            self.partnerLat = json["latitude"].doubleValue
+            self.partnerLon = json["longitude"].doubleValue
             
             self.GPSdegrees = self.compass(self.userLat, y1: self.userLon, x2:self.partnerLat, y2:self.partnerLon)
             self.distLabel.text = "\(self.calcDist())m"

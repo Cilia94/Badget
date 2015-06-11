@@ -152,16 +152,19 @@ class FindPartnerVC: UIViewController {
         Alamofire.request(.GET, "http://student.howest.be/eliot.colinet/20142015/MA4/BADGET/api/users").responseJSON{(_,_,data,_) in
             var json = JSON(data!)
             
+            var partner_id = 0
+            
             for Dict in json.arrayValue {
                 if ( self.fav_stage == Dict["fav_stage"].stringValue && self.fav_genre == Dict["fav_genre"].stringValue && Dict["partner_id"].intValue == 0 && Dict["id"].intValue != NSUserDefaults.standardUserDefaults().integerForKey("user_id")) {
                     
                     NSUserDefaults.standardUserDefaults().setInteger(Dict["id"].intValue, forKey: "partner_id")
                     NSUserDefaults.standardUserDefaults().synchronize()
-                    let user_id = NSUserDefaults.standardUserDefaults().integerForKey("user_id")
-                    println("Partner_id : \(user_id)")
+                    partner_id = Dict["id"].intValue
+                    println("Partner_id : \(partner_id)")
                 }
             }
-            if (NSUserDefaults.standardUserDefaults().integerForKey("partner_id") == 0){
+            
+            if (partner_id == 0){
                 println("geen partner gevonden...")
                 let noPartner = NoPartnerVC();
                 self.navigationController?.pushViewController(noPartner, animated: true)
@@ -194,35 +197,33 @@ class FindPartnerVC: UIViewController {
         Alamofire.request(.GET, "http://student.howest.be/eliot.colinet/20142015/MA4/BADGET/api/users/\(id1)").responseJSON{(_,_,data,_) in
             var json = JSON(data!)
             
-            for Dict in json.arrayValue {
+            println(json)
                 
-                let parameters = [
-                    "id": Dict["id"].intValue,
-                    "name": Dict["fav_stage"].stringValue,
-                    "partner_id": id2,
-                    "partner_found": 0,
-                    "fav_stage": Dict["fav_stage"].stringValue,
-                    "fav_genre": Dict["fav_genre"].stringValue
-                ]
-                Alamofire.request(.PUT, "http://student.howest.be/eliot.colinet/20142015/MA4/BADGET/api/users/\(id1)", parameters: parameters as? [String : AnyObject])
-            }
+            let parameters = [
+                "id": json["id"].intValue,
+                "name": json["name"].stringValue,
+                "partner_id": id2,
+                "partner_found": 0,
+                "fav_stage": json["fav_stage"].stringValue,
+                "fav_genre": json["fav_genre"].stringValue
+            ]
+            Alamofire.request(.PUT, "http://student.howest.be/eliot.colinet/20142015/MA4/BADGET/api/users/\(id1)", parameters: parameters as? [String : AnyObject])
+            
         }
         
         Alamofire.request(.GET, "http://student.howest.be/eliot.colinet/20142015/MA4/BADGET/api/users/\(id2)").responseJSON{(_,_,data,_) in
             var json = JSON(data!)
             
-            for Dict in json.arrayValue {
-                
-                let parameters = [
-                    "id": Dict["id"].intValue,
-                    "name": Dict["fav_stage"].stringValue,
-                    "partner_id": id1,
-                    "partner_found": 0,
-                    "fav_stage": Dict["fav_stage"].stringValue,
-                    "fav_genre": Dict["fav_genre"].stringValue
-                ]
-                Alamofire.request(.PUT, "http://student.howest.be/eliot.colinet/20142015/MA4/BADGET/api/users/\(id2)", parameters: parameters as? [String : AnyObject])
-            }
+            let parameters = [
+                "id": json["id"].intValue,
+                "name": json["name"].stringValue,
+                "partner_id": id1,
+                "partner_found": 0,
+                "fav_stage": json["fav_stage"].stringValue,
+                "fav_genre": json["fav_genre"].stringValue
+            ]
+            Alamofire.request(.PUT, "http://student.howest.be/eliot.colinet/20142015/MA4/BADGET/api/users/\(id2)", parameters: parameters as? [String : AnyObject])
+            
         }
         
         let compass = CompassVC();
@@ -389,14 +390,11 @@ class FindPartnerVC: UIViewController {
         Alamofire.request(.GET, "http://student.howest.be/eliot.colinet/20142015/MA4/BADGET/api/users/\(id)").responseJSON{(_,_,data,_) in
             var json = JSON(data!)
             
-            for Dict in json.arrayValue {
-                
-                var id = Dict["id"].intValue
-                var name = Dict["name"].stringValue
-                var partner_id = Dict["partner_id"].intValue
-                var partner_found = Dict["partner_found"].intValue
-                
-            }
+            var id = json["id"].intValue
+            var name = json["name"].stringValue
+            var partner_id = json["partner_id"].intValue
+            var partner_found = json["partner_found"].intValue
+            
         }
     }
     
