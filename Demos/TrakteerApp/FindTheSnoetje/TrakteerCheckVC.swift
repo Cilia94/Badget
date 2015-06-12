@@ -92,7 +92,7 @@ class TrakteerCheckVC: UIViewController, UIImagePickerControllerDelegate, UINavi
     
     func toRandomVC(){
         
-        self.saveImageToFileManager(self.imageView.image!)
+        UIImageWriteToSavedPhotosAlbum(self.imageView.image!, self, "image:didFinishSavingWithError:contextInfo:", nil)
         
         var randomVC = TrakteerRandomVC()
         navigationController?.pushViewController(randomVC, animated: true)
@@ -231,17 +231,12 @@ class TrakteerCheckVC: UIViewController, UIImagePickerControllerDelegate, UINavi
         self.imageView.addSubview(view)
     }
     
-    func saveImageToFileManager(image:UIImage) {
-        
-        let fileManager = NSFileManager.defaultManager()
-        
-        var paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as! String
-        
-        var filePathToWrite = "\(paths)/SaveFile.png"
-        
-        var imageData: NSData = UIImagePNGRepresentation(image)
-        
-        fileManager.createFileAtPath(filePathToWrite, contents: imageData, attributes: nil)
+    func image(image: UIImage, didFinishSavingWithError
+        error: NSErrorPointer, contextInfo:UnsafePointer<Void>) {
+            
+            if error != nil {
+                // Report error to user
+            }
     }
     
     override func didReceiveMemoryWarning() {

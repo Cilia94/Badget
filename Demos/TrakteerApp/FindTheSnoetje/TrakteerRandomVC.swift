@@ -16,6 +16,7 @@ class TrakteerRandomVC: UIViewController, UIImagePickerControllerDelegate, UINav
     var imageInPortrait:Bool!
     var facebox:UIView!
     var features:[CGRect] = []
+    var kroontje:UIImageView!
     
     override func viewDidLoad() {
         
@@ -82,6 +83,7 @@ class TrakteerRandomVC: UIViewController, UIImagePickerControllerDelegate, UINav
         self.view.addSubview(self.imageView)
         
         self.facebox = UIView(frame: CGRectNull)
+        self.kroontje = UIImageView(frame: CGRectNull)
         
         self.features = features
         
@@ -113,7 +115,8 @@ class TrakteerRandomVC: UIViewController, UIImagePickerControllerDelegate, UINav
         
         var randomNmbr = Int(arc4random_uniform(UInt32(self.features.count)))
         
-        self.drawFaceRecognitionBox(self.features[randomNmbr])
+        //self.drawFaceRecognitionBox(self.features[randomNmbr])
+        self.drawKroontje(self.features[randomNmbr])
         
     }
     
@@ -128,6 +131,19 @@ class TrakteerRandomVC: UIViewController, UIImagePickerControllerDelegate, UINav
         self.facebox.layer.borderColor = UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 1).CGColor
         
         self.imageView.addSubview(self.facebox)
+    }
+    
+    func drawKroontje(featureBounds:CGRect) {
+        self.kroontje.removeFromSuperview()
+        self.kroontje = UIImageView(image: UIImage(named: "kroontje"))
+        
+        var extra = Float(featureBounds.size.width) / 3
+        self.kroontje.frame = CGRectMake(CGFloat(Float(featureBounds.origin.x) - extra/2), CGFloat(Float(featureBounds.origin.y) - 2 * extra), CGFloat(Float(featureBounds.size.width) + extra), CGFloat(Float(featureBounds.size.height)))
+        //self.kroontje.layer.borderWidth = CGFloat(Float(featureBounds.size.width) / 20)
+        //self.kroontje.backgroundColor = UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 0.5)
+        //self.kroontje.layer.borderColor = UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 1).CGColor
+        
+        self.imageView.addSubview(self.kroontje)
     }
     
     override func didReceiveMemoryWarning() {
