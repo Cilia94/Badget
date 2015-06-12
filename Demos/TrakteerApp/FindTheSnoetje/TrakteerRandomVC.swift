@@ -9,17 +9,6 @@
 import UIKit
 
 class TrakteerRandomVC: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-
-    // MARK: - IBOutlets
-    
-    // MARK: - Properties
-    var theView:SnoetView {
-        get {
-            
-            return view as! SnoetView
-            
-        }
-    }
     
     var featureContainer:UIView!
     var imageView:UIImageView!
@@ -28,22 +17,49 @@ class TrakteerRandomVC: UIViewController, UIImagePickerControllerDelegate, UINav
     var facebox:UIView!
     var features:[CGRect] = []
     
-    
-    override func loadView() {
-        
-        view = SnoetView(frame: UIScreen.mainScreen().bounds)
-        
-        self.view.backgroundColor = UIColor.greenColor()
-        
-    }
-    
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        self.view.backgroundColor = UIColor.greenColor()
         
         self.createButton("random", x: 160, y: 375, w: 75, h: 40, center: true, function: "randomizeButtonClicked")
         
-        self.createButton("verwijderen", x: 160, y: 425, w: 150, h: 40, center: true, function: "deleteImage")
+        self.createButton("nieuwe foto", x: 160, y: 425, w: 150, h: 40, center: true, function: "camera")
+        
+    }
+    
+    func camera(){
+        
+        println("Camera button touched");
+        
+        if ( UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera) ){
+            
+            println("Camera beschikbaar");
+            var mediatypes = UIImagePickerController.availableMediaTypesForSourceType(UIImagePickerControllerSourceType.Camera)
+            println(mediatypes) // public.image, public.movie
+            
+            let imagepicker = UIImagePickerController()
+            imagepicker.delegate = self;
+            imagepicker.mediaTypes = mediatypes!
+            imagepicker.sourceType = UIImagePickerControllerSourceType.Camera
+            
+            self.presentViewController(imagepicker, animated: true, completion: nil)
+            
+        }else{
+            println("Camera niet beschikbaar");
+        }
+    }
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
+        
+        let image = info[UIImagePickerControllerOriginalImage] as! UIImage
+        
+        var checkVC = TrakteerCheckVC()
+        navigationController?.pushViewController(checkVC, animated: true)
+        
+        checkVC.setImage(image)
+        
+        picker.dismissViewControllerAnimated(true, completion: nil)
         
     }
     
@@ -90,15 +106,6 @@ class TrakteerRandomVC: UIViewController, UIImagePickerControllerDelegate, UINav
         self.view.addSubview(button)
         
         button.addTarget(self, action: Selector(function), forControlEvents: UIControlEvents.TouchUpInside)
-        
-    }
-    
-    func deleteImage(){
-        
-        // Code to delete image from phone
-        
-        var overviewVC = TrakteerOverviewVC()
-        self.presentViewController(overviewVC, animated: true, completion: nil)
         
     }
     

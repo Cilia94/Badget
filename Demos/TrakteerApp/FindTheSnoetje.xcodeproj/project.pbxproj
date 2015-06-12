@@ -7,14 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		73C53A291B2ACA200011C68B /* TrakteerIntroVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C53A281B2ACA200011C68B /* TrakteerIntroVC.swift */; };
 		73FDA53B1B278A260045A07D /* TrakteerRandomVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FDA53A1B278A260045A07D /* TrakteerRandomVC.swift */; };
 		73FDA53D1B278AFB0045A07D /* TrakteerCheckVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FDA53C1B278AFB0045A07D /* TrakteerCheckVC.swift */; };
-		73FDA53F1B278B500045A07D /* TrakteerOverviewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FDA53E1B278B500045A07D /* TrakteerOverviewVC.swift */; };
+		73FDA53F1B278B500045A07D /* TrakteerUitlegVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FDA53E1B278B500045A07D /* TrakteerUitlegVC.swift */; };
 		863A69751AF9016B0079A045 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 863A69741AF9016B0079A045 /* AppDelegate.swift */; };
 		863A69771AF9016B0079A045 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 863A69761AF9016B0079A045 /* Images.xcassets */; };
 		863A697A1AF9016B0079A045 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 863A69781AF9016B0079A045 /* LaunchScreen.xib */; };
 		863A69861AF9016B0079A045 /* FindTheSnoetjeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 863A69851AF9016B0079A045 /* FindTheSnoetjeTests.swift */; };
-		863A69921AF901B80079A045 /* SnoetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 863A69911AF901B80079A045 /* SnoetView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,9 +28,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		73C53A281B2ACA200011C68B /* TrakteerIntroVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrakteerIntroVC.swift; sourceTree = "<group>"; };
 		73FDA53A1B278A260045A07D /* TrakteerRandomVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrakteerRandomVC.swift; sourceTree = "<group>"; };
 		73FDA53C1B278AFB0045A07D /* TrakteerCheckVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrakteerCheckVC.swift; sourceTree = "<group>"; };
-		73FDA53E1B278B500045A07D /* TrakteerOverviewVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrakteerOverviewVC.swift; sourceTree = "<group>"; };
+		73FDA53E1B278B500045A07D /* TrakteerUitlegVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrakteerUitlegVC.swift; sourceTree = "<group>"; };
 		863A696F1AF9016B0079A045 /* FindTheSnoetje.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FindTheSnoetje.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		863A69731AF9016B0079A045 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		863A69741AF9016B0079A045 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -39,7 +40,6 @@
 		863A697F1AF9016B0079A045 /* FindTheSnoetjeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FindTheSnoetjeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		863A69841AF9016B0079A045 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		863A69851AF9016B0079A045 /* FindTheSnoetjeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindTheSnoetjeTests.swift; sourceTree = "<group>"; };
-		863A69911AF901B80079A045 /* SnoetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnoetView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,10 +82,10 @@
 			isa = PBXGroup;
 			children = (
 				863A69741AF9016B0079A045 /* AppDelegate.swift */,
-				73FDA53E1B278B500045A07D /* TrakteerOverviewVC.swift */,
+				73C53A281B2ACA200011C68B /* TrakteerIntroVC.swift */,
+				73FDA53E1B278B500045A07D /* TrakteerUitlegVC.swift */,
 				73FDA53C1B278AFB0045A07D /* TrakteerCheckVC.swift */,
 				73FDA53A1B278A260045A07D /* TrakteerRandomVC.swift */,
-				863A69911AF901B80079A045 /* SnoetView.swift */,
 				863A69761AF9016B0079A045 /* Images.xcassets */,
 				863A69781AF9016B0079A045 /* LaunchScreen.xib */,
 				863A69721AF9016B0079A045 /* Supporting Files */,
@@ -217,11 +217,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				863A69921AF901B80079A045 /* SnoetView.swift in Sources */,
 				73FDA53B1B278A260045A07D /* TrakteerRandomVC.swift in Sources */,
 				863A69751AF9016B0079A045 /* AppDelegate.swift in Sources */,
 				73FDA53D1B278AFB0045A07D /* TrakteerCheckVC.swift in Sources */,
-				73FDA53F1B278B500045A07D /* TrakteerOverviewVC.swift in Sources */,
+				73C53A291B2ACA200011C68B /* TrakteerIntroVC.swift in Sources */,
+				73FDA53F1B278B500045A07D /* TrakteerUitlegVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

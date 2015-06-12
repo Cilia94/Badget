@@ -9,17 +9,6 @@
 import UIKit
 
 class TrakteerCheckVC: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-
-    // MARK: - IBOutlets
-    
-    // MARK: - Properties
-    var theView:SnoetView {
-        get {
-            
-            return view as! SnoetView
-            
-        }
-    }
     
     var featureContainer:UIView!
     var imageView:UIImageView!
@@ -27,15 +16,6 @@ class TrakteerCheckVC: UIViewController, UIImagePickerControllerDelegate, UINavi
     var imageInPortrait:Bool!
     var vraag:UILabel!
     var featuresList:[CGRect] = []
-    
-    // MARK: - Initializers methods
-    
-    // MARK: - Lifecycle methods
-    override func loadView() {
-        
-        view = SnoetView(frame: UIScreen.mainScreen().bounds)
-        
-    }
     
     override func viewDidLoad() {
         
@@ -79,13 +59,13 @@ class TrakteerCheckVC: UIViewController, UIImagePickerControllerDelegate, UINavi
         
     }
     
-    func toRandomVC(){
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
         
-        // NAVIGATIONController DEBUG
-        var randomVC = TrakteerRandomVC()
-        self.presentViewController(randomVC, animated: true, completion: nil)
+        let image = info[UIImagePickerControllerOriginalImage] as! UIImage
         
-        randomVC.setImage(self.imageView.image!, features: self.featuresList)
+        picker.dismissViewControllerAnimated(true, completion: nil)
+        
+        self.setImage(image)
         
     }
     
@@ -110,21 +90,14 @@ class TrakteerCheckVC: UIViewController, UIImagePickerControllerDelegate, UINavi
         self.detectFaces()
     }
     
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
+    func toRandomVC(){
         
-        let image = info[UIImagePickerControllerOriginalImage] as! UIImage
+        self.saveImageToFileManager(self.imageView.image!)
         
-        picker.dismissViewControllerAnimated(true, completion: nil)
+        var randomVC = TrakteerRandomVC()
+        navigationController?.pushViewController(randomVC, animated: true)
         
-        self.setImage(image)
-        
-        
-        //NSTimer.scheduledTimerWithTimeInterval(5, target: self, selector: "tickHandler", userInfo: nil, repeats: false)
-    }
-    
-    func tickHandler(){
-        
-        self.imageView.image = nil;
+        randomVC.setImage(self.imageView.image!, features: self.featuresList)
         
     }
     
@@ -143,8 +116,6 @@ class TrakteerCheckVC: UIViewController, UIImagePickerControllerDelegate, UINavi
     }
     
     func detectFaces() {
-        
-        println("[SnoetVC] Detect button clicked")
         
         let context = CIContext(options: nil)
         
@@ -258,6 +229,19 @@ class TrakteerCheckVC: UIViewController, UIImagePickerControllerDelegate, UINavi
         view.layer.borderColor = UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 1).CGColor
         
         self.imageView.addSubview(view)
+    }
+    
+    func saveImageToFileManager(image:UIImage) {
+        
+        let fileManager = NSFileManager.defaultManager()
+        
+        var paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as! String
+        
+        var filePathToWrite = "\(paths)/SaveFile.png"
+        
+        var imageData: NSData = UIImagePNGRepresentation(image)
+        
+        fileManager.createFileAtPath(filePathToWrite, contents: imageData, attributes: nil)
     }
     
     override func didReceiveMemoryWarning() {

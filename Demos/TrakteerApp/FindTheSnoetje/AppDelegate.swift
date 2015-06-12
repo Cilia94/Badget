@@ -12,20 +12,24 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    var overviewVC:TrakteerOverviewVC?
-
+    var introVC:TrakteerIntroVC?
+    var navVC: UINavigationController?
+    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        
+        self.introVC = TrakteerIntroVC(nibName: nil, bundle: nil)
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        // Override point for customization after application launch.
         
-        overviewVC = TrakteerOverviewVC(nibName: nil, bundle: nil)
+        self.navVC = UINavigationController(rootViewController: self.introVC!)
         
-        window?.rootViewController = overviewVC
+        self.navVC!.navigationBar.hidden = true;
+        self.navVC!.interactivePopGestureRecognizer.enabled = false
         
+        window?.rootViewController = self.navVC
         
         self.window!.backgroundColor = UIColor.whiteColor()
+        
         self.window!.makeKeyAndVisible()
+        
         return true
     }
 
