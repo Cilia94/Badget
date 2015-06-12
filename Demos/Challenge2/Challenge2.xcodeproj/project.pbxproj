@@ -11,6 +11,9 @@
 		735C99741B2AE602003F6DBF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 735C99731B2AE602003F6DBF /* Images.xcassets */; };
 		735C99771B2AE602003F6DBF /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 735C99751B2AE602003F6DBF /* LaunchScreen.xib */; };
 		735C99831B2AE602003F6DBF /* Challenge2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735C99821B2AE602003F6DBF /* Challenge2Tests.swift */; };
+		735C998D1B2AE60E003F6DBF /* C2UitlegVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735C998C1B2AE60E003F6DBF /* C2UitlegVC.swift */; };
+		735C99991B2AFCC1003F6DBF /* C2IntroVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735C99981B2AFCC1003F6DBF /* C2IntroVC.swift */; };
+		735C999B1B2AFE5E003F6DBF /* Badge2VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735C999A1B2AFE5E003F6DBF /* Badge2VC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,6 +35,9 @@
 		735C997C1B2AE602003F6DBF /* Challenge2Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Challenge2Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		735C99811B2AE602003F6DBF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		735C99821B2AE602003F6DBF /* Challenge2Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Challenge2Tests.swift; sourceTree = "<group>"; };
+		735C998C1B2AE60E003F6DBF /* C2UitlegVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = C2UitlegVC.swift; sourceTree = "<group>"; };
+		735C99981B2AFCC1003F6DBF /* C2IntroVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = C2IntroVC.swift; sourceTree = "<group>"; };
+		735C999A1B2AFE5E003F6DBF /* Badge2VC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Badge2VC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +80,9 @@
 			isa = PBXGroup;
 			children = (
 				735C99711B2AE602003F6DBF /* AppDelegate.swift */,
+				735C99981B2AFCC1003F6DBF /* C2IntroVC.swift */,
+				735C998C1B2AE60E003F6DBF /* C2UitlegVC.swift */,
+				735C999A1B2AFE5E003F6DBF /* Badge2VC.swift */,
 				735C99731B2AE602003F6DBF /* Images.xcassets */,
 				735C99751B2AE602003F6DBF /* LaunchScreen.xib */,
 				735C996F1B2AE602003F6DBF /* Supporting Files */,
@@ -205,6 +214,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				735C999B1B2AFE5E003F6DBF /* Badge2VC.swift in Sources */,
+				735C99991B2AFCC1003F6DBF /* C2IntroVC.swift in Sources */,
+				735C998D1B2AE60E003F6DBF /* C2UitlegVC.swift in Sources */,
 				735C99721B2AE602003F6DBF /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

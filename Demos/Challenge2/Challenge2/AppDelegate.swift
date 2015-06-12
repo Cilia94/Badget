@@ -12,13 +12,24 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
-
+    var introVC:C2IntroVC?
+    var navVC: UINavigationController?
+    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        self.introVC = C2IntroVC(nibName: nil, bundle: nil)
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        // Override point for customization after application launch.
+        
+        
+        self.navVC = UINavigationController(rootViewController: introVC!);
+        self.navVC!.navigationBar.hidden = true;
+        self.navVC!.interactivePopGestureRecognizer.enabled = false
+        
+        window?.rootViewController = self.navVC
+        
         self.window!.backgroundColor = UIColor.whiteColor()
+        
         self.window!.makeKeyAndVisible()
+        
         return true
     }
 
