@@ -7,10 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		736123CB1B2C992800879257 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736123CA1B2C992800879257 /* AppDelegate.swift */; };
 		736123CD1B2C992800879257 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 736123CC1B2C992800879257 /* Images.xcassets */; };
 		736123D01B2C992800879257 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 736123CE1B2C992800879257 /* LaunchScreen.xib */; };
 		736123DC1B2C992800879257 /* Challenge2and3Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736123DB1B2C992800879257 /* Challenge2and3Tests.swift */; };
+		736123E91B2C994000879257 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736123E51B2C994000879257 /* AppDelegate.swift */; };
+		736123EA1B2C994000879257 /* C2IntroVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736123E61B2C994000879257 /* C2IntroVC.swift */; };
+		736123EB1B2C994000879257 /* C2UitlegVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736123E71B2C994000879257 /* C2UitlegVC.swift */; };
+		736123EC1B2C994000879257 /* Badge2VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736123E81B2C994000879257 /* Badge2VC.swift */; };
+		736123F51B2C998700879257 /* GSintroVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736123ED1B2C998700879257 /* GSintroVC.swift */; };
+		736123F61B2C998700879257 /* GScheckVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736123EE1B2C998700879257 /* GScheckVC.swift */; };
+		736123F71B2C998700879257 /* Badge3VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736123EF1B2C998700879257 /* Badge3VC.swift */; };
+		736123F81B2C998700879257 /* SRWebClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736123F01B2C998700879257 /* SRWebClient.swift */; };
+		736123F91B2C998700879257 /* TrakteerIntroVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736123F11B2C998700879257 /* TrakteerIntroVC.swift */; };
+		736123FA1B2C998700879257 /* TrakteerUitlegVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736123F21B2C998700879257 /* TrakteerUitlegVC.swift */; };
+		736123FB1B2C998700879257 /* TrakteerCheckVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736123F31B2C998700879257 /* TrakteerCheckVC.swift */; };
+		736123FC1B2C998700879257 /* TrakteerRandomVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736123F41B2C998700879257 /* TrakteerRandomVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -26,12 +37,23 @@
 /* Begin PBXFileReference section */
 		736123C51B2C992800879257 /* Challenge2and3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Challenge2and3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		736123C91B2C992800879257 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		736123CA1B2C992800879257 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		736123CC1B2C992800879257 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		736123CF1B2C992800879257 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		736123D51B2C992800879257 /* Challenge2and3Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Challenge2and3Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		736123DA1B2C992800879257 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		736123DB1B2C992800879257 /* Challenge2and3Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Challenge2and3Tests.swift; sourceTree = "<group>"; };
+		736123E51B2C994000879257 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		736123E61B2C994000879257 /* C2IntroVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = C2IntroVC.swift; sourceTree = "<group>"; };
+		736123E71B2C994000879257 /* C2UitlegVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = C2UitlegVC.swift; sourceTree = "<group>"; };
+		736123E81B2C994000879257 /* Badge2VC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Badge2VC.swift; sourceTree = "<group>"; };
+		736123ED1B2C998700879257 /* GSintroVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GSintroVC.swift; sourceTree = "<group>"; };
+		736123EE1B2C998700879257 /* GScheckVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GScheckVC.swift; sourceTree = "<group>"; };
+		736123EF1B2C998700879257 /* Badge3VC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Badge3VC.swift; sourceTree = "<group>"; };
+		736123F01B2C998700879257 /* SRWebClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SRWebClient.swift; sourceTree = "<group>"; };
+		736123F11B2C998700879257 /* TrakteerIntroVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrakteerIntroVC.swift; sourceTree = "<group>"; };
+		736123F21B2C998700879257 /* TrakteerUitlegVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrakteerUitlegVC.swift; sourceTree = "<group>"; };
+		736123F31B2C998700879257 /* TrakteerCheckVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrakteerCheckVC.swift; sourceTree = "<group>"; };
+		736123F41B2C998700879257 /* TrakteerRandomVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrakteerRandomVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,7 +95,18 @@
 		736123C71B2C992800879257 /* Challenge2and3 */ = {
 			isa = PBXGroup;
 			children = (
-				736123CA1B2C992800879257 /* AppDelegate.swift */,
+				736123E51B2C994000879257 /* AppDelegate.swift */,
+				736123E61B2C994000879257 /* C2IntroVC.swift */,
+				736123E71B2C994000879257 /* C2UitlegVC.swift */,
+				736123E81B2C994000879257 /* Badge2VC.swift */,
+				736123ED1B2C998700879257 /* GSintroVC.swift */,
+				736123EE1B2C998700879257 /* GScheckVC.swift */,
+				736123EF1B2C998700879257 /* Badge3VC.swift */,
+				736123F01B2C998700879257 /* SRWebClient.swift */,
+				736123F11B2C998700879257 /* TrakteerIntroVC.swift */,
+				736123F21B2C998700879257 /* TrakteerUitlegVC.swift */,
+				736123F31B2C998700879257 /* TrakteerCheckVC.swift */,
+				736123F41B2C998700879257 /* TrakteerRandomVC.swift */,
 				736123CC1B2C992800879257 /* Images.xcassets */,
 				736123CE1B2C992800879257 /* LaunchScreen.xib */,
 				736123C81B2C992800879257 /* Supporting Files */,
@@ -205,7 +238,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				736123CB1B2C992800879257 /* AppDelegate.swift in Sources */,
+				736123EA1B2C994000879257 /* C2IntroVC.swift in Sources */,
+				736123F51B2C998700879257 /* GSintroVC.swift in Sources */,
+				736123FB1B2C998700879257 /* TrakteerCheckVC.swift in Sources */,
+				736123FA1B2C998700879257 /* TrakteerUitlegVC.swift in Sources */,
+				736123F71B2C998700879257 /* Badge3VC.swift in Sources */,
+				736123FC1B2C998700879257 /* TrakteerRandomVC.swift in Sources */,
+				736123EB1B2C994000879257 /* C2UitlegVC.swift in Sources */,
+				736123E91B2C994000879257 /* AppDelegate.swift in Sources */,
+				736123F91B2C998700879257 /* TrakteerIntroVC.swift in Sources */,
+				736123EC1B2C994000879257 /* Badge2VC.swift in Sources */,
+				736123F81B2C998700879257 /* SRWebClient.swift in Sources */,
+				736123F61B2C998700879257 /* GScheckVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -324,9 +368,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = Challenge2and3/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -334,6 +380,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = Challenge2and3/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -405,6 +405,7 @@
 				735C99881B2AE602003F6DBF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		735C99891B2AE602003F6DBF /* Build configuration list for PBXNativeTarget "Challenge2Tests" */ = {
 			isa = XCConfigurationList;
@@ -413,6 +414,7 @@
 				735C998B1B2AE602003F6DBF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
