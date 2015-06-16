@@ -90,6 +90,12 @@ class TrakteerRandomVC: UIViewController, UIImagePickerControllerDelegate, UINav
     }
     
     func randomizeButtonClicked(){
+        
+        if (self.features.count == 0) {
+            self.noFeaturesAlert()
+            return
+        }
+        
         var list = [0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.3, 2.6, 3, 3.3, 3.6, 3.9, 4.5, 5]
         
         for index in 0...(list.count - 1) {
@@ -118,6 +124,19 @@ class TrakteerRandomVC: UIViewController, UIImagePickerControllerDelegate, UINav
         //self.drawFaceRecognitionBox(self.features[randomNmbr])
         self.drawKroontje(self.features[randomNmbr])
         
+    }
+    
+    func noFeaturesAlert() {
+        let alert = UIAlertController(
+            title: "GEEN PERSONEN",
+            message: "Er zijn geen personen gedetecteerd op deze foto",
+            preferredStyle: UIAlertControllerStyle.Alert
+        )
+        let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default) { (action) -> Void in
+            // Code
+        }
+        alert.addAction(okAction)
+        self.presentViewController(alert, animated: true, completion: nil)
     }
     
     func drawFaceRecognitionBox(featureBounds:CGRect) {

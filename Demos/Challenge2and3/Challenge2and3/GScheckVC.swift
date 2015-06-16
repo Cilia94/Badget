@@ -186,7 +186,7 @@ class GScheckVC: UIViewController, UIImagePickerControllerDelegate, UINavigation
     
     func uploadImage() {
         println("upload")
-        var image:UIImage = self.RBResizeImage(self.imageView.image!, targetSize: CGSizeMake(1280, 960))
+        var image:UIImage = self.RBResizeImage(self.imageView.image!, targetSize: CGSizeMake(640, 480))
         let imageData:NSData = NSData(data: UIImageJPEGRepresentation(image, 1.0))
         SRWebClient.POST("http://student.howest.be/eliot.colinet/20142015/MA4/BADGET/api/images")
             .data(imageData, fieldName:"file", data:["id":"","user_id":"2","image":"swift.jpg"])

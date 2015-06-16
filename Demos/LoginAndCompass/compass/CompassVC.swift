@@ -105,6 +105,7 @@ class CompassVC: UIViewController, CLLocationManagerDelegate {
             println("NO Internet!")
             self.noInternetAlert()
         }
+        self.getPartnerName()
         self.checkDB()
         NSTimer.scheduledTimerWithTimeInterval(5, target: self, selector: "checkDB", userInfo: nil, repeats: true)
         NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "rotateCompass", userInfo: nil, repeats: true)
@@ -190,6 +191,18 @@ class CompassVC: UIViewController, CLLocationManagerDelegate {
         }
     }
     
+    func getPartnerName() {
+        
+        let partner_id = NSUserDefaults.standardUserDefaults().integerForKey("partner_id")
+        
+        Alamofire.request(.GET, "http://student.howest.be/eliot.colinet/20142015/MA4/BADGET/api/users/\(partner_id)").responseJSON{(_,_,data,_) in
+            var json = JSON(data!)
+            
+            self.partnerName = json["name"].stringValue
+            println(self.partnerName)
+        }
+    }
+    
     func getPartnerLocation() {
         
         let partner_id = NSUserDefaults.standardUserDefaults().integerForKey("partner_id")
@@ -200,6 +213,7 @@ class CompassVC: UIViewController, CLLocationManagerDelegate {
             self.partnerLat = json["latitude"].doubleValue
             self.partnerLon = json["longitude"].doubleValue
             self.partnerName = json["name"].stringValue
+            println(self.partnerName)
             
             self.GPSdegrees = self.compass(self.userLat, y1: self.userLon, x2:self.partnerLat, y2:self.partnerLon)
             self.distLabel.text = "\(self.calcDist())m"

@@ -102,11 +102,11 @@
 				736123ED1B2C998700879257 /* GSintroVC.swift */,
 				736123EE1B2C998700879257 /* GScheckVC.swift */,
 				736123EF1B2C998700879257 /* Badge3VC.swift */,
-				736123F01B2C998700879257 /* SRWebClient.swift */,
 				736123F11B2C998700879257 /* TrakteerIntroVC.swift */,
 				736123F21B2C998700879257 /* TrakteerUitlegVC.swift */,
 				736123F31B2C998700879257 /* TrakteerCheckVC.swift */,
 				736123F41B2C998700879257 /* TrakteerRandomVC.swift */,
+				736123F01B2C998700879257 /* SRWebClient.swift */,
 				736123CC1B2C992800879257 /* Images.xcassets */,
 				736123CE1B2C992800879257 /* LaunchScreen.xib */,
 				736123C81B2C992800879257 /* Supporting Files */,
@@ -440,6 +440,7 @@
 				736123E11B2C992800879257 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		736123E21B2C992800879257 /* Build configuration list for PBXNativeTarget "Challenge2and3Tests" */ = {
 			isa = XCConfigurationList;
@@ -448,6 +449,7 @@
 				736123E41B2C992800879257 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

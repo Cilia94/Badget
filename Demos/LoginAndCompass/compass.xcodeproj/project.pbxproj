@@ -20,8 +20,6 @@
 		734AA7A81B1DCE6F00561BEC /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734AA7A71B1DCE6F00561BEC /* SwiftyJSON.swift */; };
 		73DCD11C1B20A8DB000EB086 /* NavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73DCD11B1B20A8DB000EB086 /* NavViewController.swift */; };
 		73DCD1251B20AA2A000EB086 /* FindPartnerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73DCD1241B20AA2A000EB086 /* FindPartnerVC.swift */; };
-		73DCD1271B20AAF7000EB086 /* SavedUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73DCD1261B20AAF7000EB086 /* SavedUser.swift */; };
-		73DCD1291B20AAFE000EB086 /* UsersData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73DCD1281B20AAFE000EB086 /* UsersData.swift */; };
 		73E6692E1B1DFD77005E168A /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 734AA79F1B1DCE2100561BEC /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
@@ -102,8 +100,6 @@
 		734AA7A71B1DCE6F00561BEC /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		73DCD11B1B20A8DB000EB086 /* NavViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavViewController.swift; sourceTree = "<group>"; };
 		73DCD1241B20AA2A000EB086 /* FindPartnerVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindPartnerVC.swift; sourceTree = "<group>"; };
-		73DCD1261B20AAF7000EB086 /* SavedUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavedUser.swift; sourceTree = "<group>"; };
-		73DCD1281B20AAFE000EB086 /* UsersData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,8 +153,6 @@
 				734AA7A71B1DCE6F00561BEC /* SwiftyJSON.swift */,
 				73448F191B1CB78D001385FE /* View.swift */,
 				731713771B20543200676F5F /* Reachability.swift */,
-				73DCD1281B20AAFE000EB086 /* UsersData.swift */,
-				73DCD1261B20AAF7000EB086 /* SavedUser.swift */,
 				73312F441B1C8BD5004218ED /* Images.xcassets */,
 				73312F461B1C8BD5004218ED /* LaunchScreen.xib */,
 				73312F401B1C8BD5004218ED /* Supporting Files */,
@@ -345,8 +339,6 @@
 				733291CE1B25BC5E0099ED06 /* NoPartnerVC.swift in Sources */,
 				73448F1A1B1CB78D001385FE /* View.swift in Sources */,
 				731713781B20543200676F5F /* Reachability.swift in Sources */,
-				73DCD1291B20AAFE000EB086 /* UsersData.swift in Sources */,
-				73DCD1271B20AAF7000EB086 /* SavedUser.swift in Sources */,
 				73DCD1251B20AA2A000EB086 /* FindPartnerVC.swift in Sources */,
 				73DCD11C1B20A8DB000EB086 /* NavViewController.swift in Sources */,
 				734AA7A81B1DCE6F00561BEC /* SwiftyJSON.swift in Sources */,
