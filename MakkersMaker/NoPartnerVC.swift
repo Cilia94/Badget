@@ -45,8 +45,7 @@ class NoPartnerVC: UIViewController {
                     NSUserDefaults.standardUserDefaults().setInteger(json["partner_id"].intValue, forKey: "partner_id")
                     NSUserDefaults.standardUserDefaults().synchronize()
                     
-                    let compass = Compass();
-                    self.navigationController?.pushViewController(compass, animated: true)
+                    self.navigationController?.pushViewController(CompassVC(), animated: true)
                 }
                 
             }

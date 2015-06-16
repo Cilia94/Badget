@@ -61,8 +61,23 @@ class TrakteerRandomVC: UIViewController, UIImagePickerControllerDelegate, UINav
             self.presentViewController(imagepicker, animated: true, completion: nil)
             
         }else{
-            println("Camera niet beschikbaar");
+            println("Camera niet beschikbaar")
+            self.noCameraAlert()
         }
+    }
+    
+    func noCameraAlert() {
+        let alert = UIAlertController(
+            title: "GEEN CAMERA",
+            message: "Camera is niet beschikbaar",
+            preferredStyle: UIAlertControllerStyle.Alert
+        )
+        let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default) { (action) -> Void in
+            // Code
+        }
+        alert.addAction(okAction)
+        self.presentViewController(alert, animated: true, completion: nil)
+        
     }
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {

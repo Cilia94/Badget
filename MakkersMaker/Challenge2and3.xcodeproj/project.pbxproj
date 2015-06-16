@@ -42,7 +42,7 @@
 		73650F5E1B300411005A96B2 /* C1IntroVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73650F541B300411005A96B2 /* C1IntroVC.swift */; };
 		73650F5F1B300411005A96B2 /* C1UitlegVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73650F551B300411005A96B2 /* C1UitlegVC.swift */; };
 		73650F601B300411005A96B2 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73650F561B300411005A96B2 /* LoginVC.swift */; };
-		73650F611B300411005A96B2 /* Compass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73650F571B300411005A96B2 /* Compass.swift */; };
+		73650F611B300411005A96B2 /* CompassVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73650F571B300411005A96B2 /* CompassVC.swift */; };
 		73650F621B300411005A96B2 /* FreeDrinkVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73650F581B300411005A96B2 /* FreeDrinkVC.swift */; };
 		73650F631B300411005A96B2 /* JouwPartnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73650F591B300411005A96B2 /* JouwPartnerViewController.swift */; };
 		73650F641B300411005A96B2 /* NoPartnerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73650F5A1B300411005A96B2 /* NoPartnerVC.swift */; };
@@ -137,7 +137,7 @@
 		73650F541B300411005A96B2 /* C1IntroVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = C1IntroVC.swift; sourceTree = "<group>"; };
 		73650F551B300411005A96B2 /* C1UitlegVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = C1UitlegVC.swift; sourceTree = "<group>"; };
 		73650F561B300411005A96B2 /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
-		73650F571B300411005A96B2 /* Compass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Compass.swift; sourceTree = "<group>"; };
+		73650F571B300411005A96B2 /* CompassVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompassVC.swift; sourceTree = "<group>"; };
 		73650F581B300411005A96B2 /* FreeDrinkVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FreeDrinkVC.swift; sourceTree = "<group>"; };
 		73650F591B300411005A96B2 /* JouwPartnerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JouwPartnerViewController.swift; sourceTree = "<group>"; };
 		73650F5A1B300411005A96B2 /* NoPartnerVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoPartnerVC.swift; sourceTree = "<group>"; };
@@ -269,7 +269,7 @@
 				73650F541B300411005A96B2 /* C1IntroVC.swift */,
 				73650F551B300411005A96B2 /* C1UitlegVC.swift */,
 				73650F561B300411005A96B2 /* LoginVC.swift */,
-				73650F571B300411005A96B2 /* Compass.swift */,
+				73650F571B300411005A96B2 /* CompassVC.swift */,
 				73650F581B300411005A96B2 /* FreeDrinkVC.swift */,
 				73D69CFD1B3011490006B35F /* Badge1VC.swift */,
 				73650F591B300411005A96B2 /* JouwPartnerViewController.swift */,
@@ -487,7 +487,7 @@
 				73650F621B300411005A96B2 /* FreeDrinkVC.swift in Sources */,
 				736123FA1B2C998700879257 /* TrakteerUitlegVC.swift in Sources */,
 				73650F7B1B300507005A96B2 /* UserInfoView.swift in Sources */,
-				73650F611B300411005A96B2 /* Compass.swift in Sources */,
+				73650F611B300411005A96B2 /* CompassVC.swift in Sources */,
 				73650F831B300533005A96B2 /* Challenge1View.swift in Sources */,
 				736123F71B2C998700879257 /* Badge3VC.swift in Sources */,
 				73650F5E1B300411005A96B2 /* C1IntroVC.swift in Sources */,

@@ -66,8 +66,11 @@ class C2UitlegVC: UIViewController {
     func rotated() {
         println(UIDevice.currentDevice().orientation.rawValue)
         if (UIDevice.currentDevice().orientation.rawValue == 3 || UIDevice.currentDevice().orientation.rawValue == 4){
-            
-            self.freezeView.transform = CGAffineTransformMakeRotation(CGFloat(M_PI_2))
+            if (UIDevice.currentDevice().orientation.rawValue == 3) {
+                self.freezeView.transform = CGAffineTransformMakeRotation(CGFloat(M_PI_2))
+            } else {
+                self.freezeView.transform = CGAffineTransformMakeRotation(CGFloat(-M_PI_2))
+            }
             self.freezeView.frame = UIScreen.mainScreen().bounds
             self.activeView.addSubview(freezeView)
             

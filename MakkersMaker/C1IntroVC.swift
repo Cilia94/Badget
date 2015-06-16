@@ -15,7 +15,7 @@ class C1IntroVC: UIViewController {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         //self.view = UserInfoView()
         //self.view = InfoChallenge(naamChallenge: "test", naamImage: "infoc1")
-        self.view = ConceptView(concept:"concept1", titel:"Makkers Unite", subtitel:"Because 2 is better than 1", uitlegCh: "info over de chllenge vrij lang ook meerdere lijnen label testje lorem ipsummmmm")
+        self.view = ConceptView(concept:"concept1", titel:"Makkers Unite", subtitel:"Because 2 is better than 1", uitlegCh: "Vind jouw nieuwe makker op het terrein, en vier het met een gratis drankje!")
         var button = pageButton(theViewC: self, titel: "Ik doe mee!", targetfunction: "next")
         
         println("ViewController")

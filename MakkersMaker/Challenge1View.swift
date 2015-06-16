@@ -5,6 +5,7 @@
 //  Eliot Colinet & Cilia Vandenameele
 //  Copyright (c) 2015. All rights reserved.
 
+
 import UIKit
 
 class Challenge1View: UIView {
@@ -12,15 +13,14 @@ class Challenge1View: UIView {
     let imageView:UIImageView
     var counter:UILabel
     var fillValue:Float?
+    var distanceValue:Int?
+    var nameP:UILabel?
     
     override init(frame: CGRect) {
         
-        
-        
-        
         self.imageView = UIImageView(frame: CGRectMake(80, 115, 138+25, 241+40))
         self.counter = UILabel(frame: CGRectMake(60, 405, 80, 40))
-        
+        self.distanceValue = 15
         super.init(frame: frame)
         
         let bg = UIImage(named: "BG")
@@ -54,6 +54,20 @@ class Challenge1View: UIView {
         
         
         
+        self.nameP = UILabel(frame: CGRectMake(70, 457, 150, 30))
+        self.nameP!.text = "LONGNAME"
+        self.nameP!.textColor = UIColor.whiteColor()
+        
+        self.addSubview(self.nameP!)
+        
+    }
+    
+    func glassFill(){
+        
+        let glass = UIImage(named: "glas")
+        let glassview = UIImageView(image: glass)
+        glassview.frame = CGRectMake(180, 350, glass!.size.width/2, glass!.size.height/2)
+        
         let glassfill = UIImage(named: "glassfill")
         //let glassfillview = UIImageView(image: glassfill)
         //glassfillview.frame = CGRectMake(180, 350, glassfill!.size.width/2, glassfill!.size.height/2)
@@ -69,11 +83,31 @@ class Challenge1View: UIView {
         //self.addSubview(glassfillview)
         
         var maskl = CAShapeLayer()
-        //
-        //        self.fillValue = 170.0
-            var fillV = self.fillValue
-                maskl.path = UIBezierPath(rect: CGRectMake(0, 140 , glass!.size.width/2, glass!.size.height/2)).CGPath
-                maskl.fillColor = UIColor.whiteColor().CGColor
+        
+        switch self.distanceValue! {
+            
+        case 0...10:
+            
+            maskl.path = UIBezierPath(rect: CGRectMake(0, 70 , glass!.size.width/2, glass!.size.height/2)).CGPath
+            
+        case 10...20:
+            maskl.path = UIBezierPath(rect: CGRectMake(0, 100 , glass!.size.width/2, glass!.size.height/2)).CGPath
+            
+        case 20...40:
+            maskl.path = UIBezierPath(rect: CGRectMake(0, 130 , glass!.size.width/2, glass!.size.height/2)).CGPath
+            
+        case 40...60:
+            maskl.path = UIBezierPath(rect: CGRectMake(0, 160 , glass!.size.width/2, glass!.size.height/2)).CGPath
+            
+        case 60...100:
+            maskl.path = UIBezierPath(rect: CGRectMake(0, 170 , glass!.size.width/2, glass!.size.height/2)).CGPath
+            
+        default:
+            maskl.path = UIBezierPath(rect: CGRectMake(0, 170 , glass!.size.width/2, glass!.size.height/2)).CGPath
+            
+        }
+        //maskl.path = UIBezierPath(rect: CGRectMake(0, 170 , glass!.size.width/2, glass!.size.height/2)).CGPath
+        maskl.fillColor = UIColor.whiteColor().CGColor
         
         self.layer.addSublayer(glasslayer)
         //self.layer.addSublayer(maskl)
@@ -83,11 +117,9 @@ class Challenge1View: UIView {
         
         //self.counter.backgroundColor = UIColor.redColor()
         //self.counter = UILabel(frame: CGRectMake(60, 400, 100, 30))
-        self.counter.text = "tttttttt"
+        self.counter.text = "Afstand"
         self.counter.textColor = UIColor.whiteColor()
         self.addSubview(self.counter)
-        
-        
         
         
     }

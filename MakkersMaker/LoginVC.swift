@@ -81,12 +81,12 @@ class LoginVC: UIViewController {
             validationAlert("Login mislukt", message: "Gelieve uw naam in te vullen")
             return
         }
-        if (self.fav_stage == "") {
-            validationAlert("Login mislukt", message: "Gelieve uw favoriete podium te selecteren")
-            return
-        }
         if (self.fav_genre == "") {
             validationAlert("Login mislukt", message: "Gelieve uw favoriete genre te selecteren")
+            return
+        }
+        if (self.fav_stage == "") {
+            validationAlert("Login mislukt", message: "Gelieve uw favoriete podium te selecteren")
             return
         }
         
@@ -104,8 +104,27 @@ class LoginVC: UIViewController {
         println(self.fav_stage)
         println(self.fav_genre)
         
-        self.postNewUser(self.theView.nameInput!.text)
         
+        let reachability = Reachability.reachabilityForInternetConnection()
+        if reachability.isReachable() {
+            self.postNewUser(self.theView.nameInput!.text)
+        } else {
+            self.noInternetAlert()
+        }
+        
+    }
+    
+    func noInternetAlert() {
+        let alert = UIAlertController(
+            title: "GEEN INTERNET",
+            message: "Gelieve uw internetverbinding in te schakelen",
+            preferredStyle: UIAlertControllerStyle.Alert
+        )
+        let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default) { (action) -> Void in
+            // Code
+        }
+        alert.addAction(okAction)
+        self.presentViewController(alert, animated: true, completion: nil)
     }
     
     func postNewUser(name:String){
@@ -211,8 +230,7 @@ class LoginVC: UIViewController {
             
         }
         
-        let kompas = Compass()
-        self.navigationController?.pushViewController(kompas, animated: true)
+        self.navigationController?.pushViewController(CompassVC(), animated: true)
     }
     
     func stageButtonTouched(){

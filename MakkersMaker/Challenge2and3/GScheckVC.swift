@@ -75,8 +75,22 @@ class GScheckVC: UIViewController, UIImagePickerControllerDelegate, UINavigation
         }else{
             
             println("Camera niet beschikbaar");
-            
+            self.noCameraAlert()
         }
+        
+    }
+    
+    func noCameraAlert() {
+        let alert = UIAlertController(
+            title: "GEEN CAMERA",
+            message: "Camera is niet beschikbaar",
+            preferredStyle: UIAlertControllerStyle.Alert
+        )
+        let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default) { (action) -> Void in
+            // Code
+        }
+        alert.addAction(okAction)
+        self.presentViewController(alert, animated: true, completion: nil)
         
     }
     
@@ -204,15 +218,34 @@ class GScheckVC: UIViewController, UIImagePickerControllerDelegate, UINavigation
         }
     }
     
-    func nextPage(sender:UIButton!) {
+    func nextPage() {
         if (groupComplete == true) {
-            self.uploadImage()
-            UIImageWriteToSavedPhotosAlbum(self.imageView.image!, self, "image:didFinishSavingWithError:contextInfo:", nil)
+            let reachability = Reachability.reachabilityForInternetConnection()
+            if reachability.isReachable() {
+                self.uploadImage()
+                UIImageWriteToSavedPhotosAlbum(self.imageView.image!, self, "image:didFinishSavingWithError:contextInfo:", nil)
+            } else {
+                self.noInternetAlert()
+            }
         } else {
             self.camera()
         }
+        
     }
-    
+
+    func noInternetAlert() {
+        let alert = UIAlertController(
+            title: "GEEN INTERNET",
+            message: "Gelieve uw internetverbinding in te schakelen",
+            preferredStyle: UIAlertControllerStyle.Alert
+        )
+        let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default) { (action) -> Void in
+            // Code
+        }
+        alert.addAction(okAction)
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
+
     func uploadImage() {
         println("upload")
         var image:UIImage = self.RBResizeImage(self.imageView.image!, targetSize: CGSizeMake(640, 480))

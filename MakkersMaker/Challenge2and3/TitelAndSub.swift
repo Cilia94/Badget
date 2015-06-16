@@ -26,7 +26,7 @@ class TitelAndSub: UIView {
         let f1 = UIFont(name: "ManusTrial", size: 40)
         let f2 = UIFont(name: "DKBlackBamboo", size: 40)
         
-        let titell = UILabel(frame: CGRectMake(15, 10, 200, 50))
+        let titell = UILabel(frame: CGRectMake(15, 10, 220, 50))
         titell.text = titel
         attributedString(string: titel!, withFont: f1, kerning: 10.0, andColor: UIColor.whiteColor())
         let first = titel! as NSString
