@@ -11,21 +11,13 @@ class Badge3VC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //self.view.backgroundColor = UIColor.yellowColor()
-        
-        //self.createButton("Volgende", x: 160, y: 375, w: 75, h: 40, center: true, function: "nextPage")
+        NSUserDefaults.standardUserDefaults().setInteger(5, forKey: "lastPage")
     }
     
     override init(nibName nibNameOrNil:String?, bundle nibBundleOrNil:NSBundle?){
-        
-        
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-        
         self.view = BadgeView(badge: 3, titel: "Fotomodel", uitleg: "Verdiend wegens vertoon van opmerkelijke groepsspirit! Je kan nu je goodie gaan afhalen", image: "badge3")
         var button = pageButton(theViewC: self, titel: "Trakteer app", targetfunction: "next")
-        
-        
     }
     
     required init(coder aDecoder: NSCoder) {
@@ -54,7 +46,6 @@ class Badge3VC: UIViewController {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
 }

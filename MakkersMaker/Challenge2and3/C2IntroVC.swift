@@ -9,10 +9,7 @@ import UIKit
 
 class C2IntroVC: UIViewController {
     
-    
-    
     override init(nibName nibNameOrNil:String?, bundle nibBundleOrNil:NSBundle?){
-        
         
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
 
@@ -29,26 +26,7 @@ class C2IntroVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-      
     }
-    
-    func enumerateFonts(){
-        
-        for fontFamily in UIFont.familyNames() {
-            
-            //if(fontFamily as! String == "Avenir Next"){
-                
-                
-                println("Font family name = \(fontFamily as! String)");
-                for fontName in UIFont.fontNamesForFamilyName(fontFamily
-                    as! String) {
-                        println("- Font name = \(fontName)");
-                }
-                println("\n");
-            }
-        //}
-    }
-
     
     func nextPage(sender:UIButton!){
         let uitlegVC = C2UitlegVC(nibName: nil, bundle: nil)
@@ -71,7 +49,6 @@ class C2IntroVC: UIViewController {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
 }

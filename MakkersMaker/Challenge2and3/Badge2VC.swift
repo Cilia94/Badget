@@ -11,6 +11,7 @@ class Badge2VC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        NSUserDefaults.standardUserDefaults().setInteger(4, forKey: "lastPage")
         
         //self.view.backgroundColor = UIColor.purpleColor()
         

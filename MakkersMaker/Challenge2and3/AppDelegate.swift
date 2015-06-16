@@ -12,21 +12,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
     var navVC: UINavigationController?
-    var mainVC: ConceptUitlegVC?
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        self.mainVC = ConceptUitlegVC(nibName: nil, bundle: nil)
+        
         
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         
-//        switch NSUserDefaults.standardUserDefaults().integerForKey("lastPage") {
-//        case 0:
-//            self.navVC = NavViewController(rootViewController: self.mainVC!);
-//        case 2:
-//            self.navVC = NavViewController(rootViewController: compassVC);
-//        default:
-//            self.navVC = NavViewController(rootViewController: self.mainVC!);
-//        }
+        switch NSUserDefaults.standardUserDefaults().integerForKey("lastPage") {
+        case 0:
+            self.navVC = NavViewController(rootViewController: ConceptUitlegVC());
+        case 1:
+            self.navVC = NavViewController(rootViewController: CompassVC());
+        case 2:
+            self.navVC = NavViewController(rootViewController: FreeDrinkVC());
+        case 3:
+            self.navVC = NavViewController(rootViewController: C2IntroVC());
+        case 4:
+            self.navVC = NavViewController(rootViewController: GSintroVC());
+        case 5:
+            self.navVC = NavViewController(rootViewController: TrakteerIntroVC());
+        default:
+            self.navVC = NavViewController(rootViewController: ConceptUitlegVC());
+        }
         
         //self.navVC = NavViewController(rootViewController: self.mainVC!);
         
@@ -80,9 +87,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func applicationDidBecomeActive(application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-        //DEBUG
-        let appDomain = NSBundle.mainBundle().bundleIdentifier!
-        NSUserDefaults.standardUserDefaults().removePersistentDomainForName(appDomain)
         if (NSUserDefaults.standardUserDefaults().integerForKey("lastPage") < 0 ) {
             println("applicationDidBecomeActive")
             let introVC = C1IntroVC(nibName: nil, bundle: nil)

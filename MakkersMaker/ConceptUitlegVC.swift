@@ -8,8 +8,7 @@
 
 import UIKit
 
-class ConceptUitlegVC: UIViewController, UIScrollViewDelegate
-{
+class ConceptUitlegVC: UIViewController, UIScrollViewDelegate {
     var pageViewController : UIPageViewController?
     var pageTitles : Array<String> = ["Matching!", "Challenges!", "New Friends!"]
     var infos : Array<String> = ["Met jouw info zoeken we je perfecte makker!", "Leer elkaar kennen tijden de challenges", "Start alleen en eindig met 3 nieuwe makkers!"]
@@ -17,11 +16,9 @@ class ConceptUitlegVC: UIViewController, UIScrollViewDelegate
     var scrollView: UIScrollView!
     var pageControl: UIPageControl!
     
-    //var pageImages : Array<String> = ["startPeople", "startPeople", "startPeople"]
     var currentIndex : Int = 0
     
-    override func viewDidLoad()
-    {
+    override func viewDidLoad() {
         super.viewDidLoad()
   
         let bg = UIImage(named: "BG")
@@ -91,7 +88,6 @@ class ConceptUitlegVC: UIViewController, UIScrollViewDelegate
             
             label.font = UIFont(name: "AvenirNext-MediumItalic", size: 30)
             
-            //label.textAlignment = .Center
             self.scrollView.addSubview(label)
 
             
@@ -108,62 +104,37 @@ class ConceptUitlegVC: UIViewController, UIScrollViewDelegate
                     boundingBox.size.width, boundingBox.size.height))
             info.text = infos[index]
             info.textColor = UIColor(red: 242/225, green: 133/225, blue: 141/225, alpha: 1)
-            //println(info.text)
-            //info.sizeToFit()
             info.font =  UIFont(name: "AvenirNext-MediumItalic", size: 20)
             
             info.numberOfLines = 0
             self.scrollView.addSubview(info)
             
             xPos += CGFloat(UIScreen.mainScreen().bounds.width)
-            //println(xPos)
-            
-            
-            
-            
         }
         
-        
-        //scrollView.backgroundColor = UIColor.redColor()
         self.view.addSubview(scrollView)
-        
-        
     }
     
-    func nextPage(sender:UIButton!)
-        {
-            println("Button tapped")
-            //let infoVC = UserInfoViewController()
-            //let infoVC = UserInfoViewController(nibName: nil, bundle: nil)
-            
-            self.navigationController?.pushViewController(C1IntroVC(), animated: true)
-            
-            //self.navigationController?.pushViewController(infoVC, animated: true)
-            
-            
+    func nextPage(sender:UIButton!) {
+        self.navigationController?.pushViewController(C1IntroVC(), animated: true)
     }
     
     func changePage(sender: AnyObject) -> () {
-        
         let x = CGFloat(pageControl.currentPage) * scrollView.frame.size.width
         self.scrollView.setContentOffset(CGPointMake(x, 0), animated: true)
     }
     
     func scrollViewDidEndDecelerating(scrollView: UIScrollView) -> () {
-        //println("aha")
         let pageNumber = round(scrollView.contentOffset.x / scrollView.frame.size.width);
         self.pageControl.currentPage = Int(pageNumber)
     }
     
     func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        //println("yay")
         let pageNumber = round(scrollView.contentOffset.x / scrollView.frame.size.width);
         self.pageControl.currentPage = Int(pageNumber)
     }
     
-    
-    override func didReceiveMemoryWarning()
-    {
+    override func didReceiveMemoryWarning(){
         super.didReceiveMemoryWarning()
     }
 }

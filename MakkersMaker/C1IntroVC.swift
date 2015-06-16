@@ -13,8 +13,6 @@ class C1IntroVC: UIViewController {
         
         
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-        //self.view = UserInfoView()
-        //self.view = InfoChallenge(naamChallenge: "test", naamImage: "infoc1")
         self.view = ConceptView(concept:"concept1", titel:"Makkers Unite", subtitel:"Because 2 is better than 1", uitlegCh: "Vind jouw nieuwe makker op het terrein, en vier het met een gratis drankje!")
         var button = pageButton(theViewC: self, titel: "Ik doe mee!", targetfunction: "next")
         
@@ -27,14 +25,9 @@ class C1IntroVC: UIViewController {
     
     func nextPage(sender:UIButton!)
     {
-        println("Button tapped")
-        //let infoVC = UserInfoViewController()
         let infoVC = C1UitlegVC(naamChallenge: "Makkers Unite", naamImage: "infoc1");
         
-        
         self.navigationController?.pushViewController(infoVC, animated: true)
-        
-        
     }
     
     
@@ -44,19 +37,14 @@ class C1IntroVC: UIViewController {
         let value = UIInterfaceOrientation.LandscapeLeft.rawValue
         UIDevice.currentDevice().setValue(value, forKey: "orientation")
         
-        
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        
     }
     
     required init(coder aDecoder: NSCoder) {
-        
         fatalError("init(coder:) has not been implemented")
-        
-        
     }
     
     func enumerateFonts(){
@@ -75,8 +63,6 @@ class C1IntroVC: UIViewController {
             }
         }
     }
-    
-    
     
 }
 

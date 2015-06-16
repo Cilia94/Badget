@@ -62,11 +62,12 @@ class Challenge1View: UIView {
         
     }
     
-    func glassFill(){
+    func glassFill( distance:Double ){
         
         let glass = UIImage(named: "glas")
         let glassview = UIImageView(image: glass)
         glassview.frame = CGRectMake(180, 350, glass!.size.width/2, glass!.size.height/2)
+        self.addSubview(glassview)
         
         let glassfill = UIImage(named: "glassfill")
         //let glassfillview = UIImageView(image: glassfill)
@@ -84,23 +85,23 @@ class Challenge1View: UIView {
         
         var maskl = CAShapeLayer()
         
-        switch self.distanceValue! {
+        switch distance {
             
-        case 0...10:
+        case 0...25:
             
-            maskl.path = UIBezierPath(rect: CGRectMake(0, 70 , glass!.size.width/2, glass!.size.height/2)).CGPath
+            maskl.path = UIBezierPath(rect: CGRectMake(0, 60 , glass!.size.width/2, glass!.size.height/2)).CGPath
             
-        case 10...20:
-            maskl.path = UIBezierPath(rect: CGRectMake(0, 100 , glass!.size.width/2, glass!.size.height/2)).CGPath
+        case 25...50:
+            maskl.path = UIBezierPath(rect: CGRectMake(0, 85 , glass!.size.width/2, glass!.size.height/2)).CGPath
             
-        case 20...40:
+        case 50...100:
+            maskl.path = UIBezierPath(rect: CGRectMake(0, 110 , glass!.size.width/2, glass!.size.height/2)).CGPath
+            
+        case 100...200:
             maskl.path = UIBezierPath(rect: CGRectMake(0, 130 , glass!.size.width/2, glass!.size.height/2)).CGPath
             
-        case 40...60:
-            maskl.path = UIBezierPath(rect: CGRectMake(0, 160 , glass!.size.width/2, glass!.size.height/2)).CGPath
-            
-        case 60...100:
-            maskl.path = UIBezierPath(rect: CGRectMake(0, 170 , glass!.size.width/2, glass!.size.height/2)).CGPath
+        case 200...500:
+            maskl.path = UIBezierPath(rect: CGRectMake(0, 150 , glass!.size.width/2, glass!.size.height/2)).CGPath
             
         default:
             maskl.path = UIBezierPath(rect: CGRectMake(0, 170 , glass!.size.width/2, glass!.size.height/2)).CGPath
@@ -121,6 +122,14 @@ class Challenge1View: UIView {
         self.counter.textColor = UIColor.whiteColor()
         self.addSubview(self.counter)
         
+        
+    }
+    
+    func showInfo() {
+        
+    }
+    
+    func showGIF() {
         
     }
     

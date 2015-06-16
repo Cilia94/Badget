@@ -7,44 +7,56 @@
 
 import UIKit
 import Alamofire
+import CoreMotion
 
 class FreeDrinkVC: UIViewController {
 
+    var allowShake:Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        NSUserDefaults.standardUserDefaults().setInteger(2, forKey: "lastPage")
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     override init(nibName nibNameOrNil:String?, bundle nibBundleOrNil:NSBundle?){
         
-        
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         self.view = ProficiatView(frame: UIScreen.mainScreen().bounds)
+        
+        NSTimer.scheduledTimerWithTimeInterval(2, target: self, selector: "motion", userInfo: nil, repeats: false)
         
         var label = UILabel(frame: CGRectMake(20, 510, 400, 50))
         label.textColor = UIColor.grayColor()
         label.text = "Schudden na ontvangst van drankje"
         self.view.addSubview(label)
-        //var button = pageButton(theViewC: self, titel: "Volgende", targetfunction: "")
+    }
+
+    required init(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     override func motionEnded(motion: UIEventSubtype, withEvent event: UIEvent) {
-        
-        if motion == .MotionShake {
-            let reachability = Reachability.reachabilityForInternetConnection()
-            if reachability.isReachable() {
-                self.navigationController?.pushViewController(Badge1VC(), animated: true)
-                // Partner_found -> 1
-                self.partnerFound()
-            } else {
-                self.noInternetAlert()
+        if (motion == .MotionShake){
+            println(self.allowShake)
+            if(self.allowShake == true) {
+                let reachability = Reachability.reachabilityForInternetConnection()
+                if reachability.isReachable() {
+                    self.navigationController?.pushViewController(Badge1VC(), animated: true)
+                    self.partnerFound()
+                    
+                } else {
+                    self.noInternetAlert()
+                }
             }
         }
+    }
+    
+    func motion() {
+        self.allowShake = true
     }
     
     func partnerFound() {
@@ -77,10 +89,6 @@ class FreeDrinkVC: UIViewController {
         }
         alert.addAction(okAction)
         self.presentViewController(alert, animated: true, completion: nil)
-    }
-
-    required init(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
 
 }

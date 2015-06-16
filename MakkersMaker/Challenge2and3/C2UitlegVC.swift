@@ -20,8 +20,6 @@ class C2UitlegVC: UIViewController {
         
         self.activeView = InfoChallenge(naamChallenge: "Strijdmakkers", naamImage: "infoc2")
         self.freezeView = FreezeView(frame: UIScreen.mainScreen().bounds)
-        
-        //var button = pageButton(theViewC: self, titel: "Start!", targetfunction: "next")
     }
 
     required init(coder aDecoder: NSCoder) {
@@ -31,16 +29,11 @@ class C2UitlegVC: UIViewController {
 
     override func viewDidLoad() {
         
-        
-        
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.yellowColor()
         
-        //self.activeView = UIView()
         self.view = self.activeView
         self.fistbump()
-        
-      
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "rotated", name: UIDeviceOrientationDidChangeNotification, object: nil)
         
@@ -53,7 +46,7 @@ class C2UitlegVC: UIViewController {
                 [weak self] (data: CMDeviceMotion!, error: NSError!) in
                 if (data.userAcceleration.x < -1 || data.userAcceleration.x > 1) {
                     println("Acceleration noticed! \(data.userAcceleration.x)")
-                    self?.motionManager.stopAccelerometerUpdates()
+                    self?.motionManager.stopDeviceMotionUpdates()
                     var badge2VC = Badge2VC()
                     self!.navigationController?.pushViewController(badge2VC, animated: true)
                 }

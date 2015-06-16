@@ -21,7 +21,6 @@ class C1UitlegVC: UIViewController {
     func nextPage(sender:UIButton!) {
         println("Button tapped ConceptViewController")
         
-        //let infoVC = FreeDrinkVC()
         let loginVC = LoginVC();
         self.navigationController?.pushViewController(loginVC, animated: true)
         
@@ -40,17 +39,6 @@ class C1UitlegVC: UIViewController {
         super.didReceiveMemoryWarning()
         
     }
-    
-    //    required init(coder aDecoder: NSCoder) {
-    //
-    //        fatalError("init(coder:) has not been implemented")
-    //
-    //
-    //    }
-    
-    
-    
-    
     
 }
 

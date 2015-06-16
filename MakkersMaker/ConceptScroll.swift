@@ -19,13 +19,6 @@ class ConceptScroll: UIViewController {
     {
         super.viewDidLoad()
         
-        
-        //self.scrolly()
-        
-        //view.backgroundColor = UIColor.redColor()
-        
-
-        
         let kad = UIImage(named: "kader-bottom")
         let kadv = UIImageView(image: kad)
         kadv.frame = CGRectMake(20, 150, kad!.size.width, kad!.size.height)
@@ -35,19 +28,11 @@ class ConceptScroll: UIViewController {
         let headv = UIImageView(image: head)
         headv.frame = CGRectMake(20, 50, head!.size.width, head!.size.height)
         self.view.addSubview(headv)
-        
-        //view.backgroundColor = UIColor(patternImage: UIImage(named: imageFile)!)
-        
-        let label = UILabel(frame: CGRectMake(80, 60, view.frame.width, 50))
-        //label.textColor = UIColor.whiteColor()
-        label.text = titleText
-        //label.font = UIFont(name: "AvenirNextCondensed-DemiBoldItalic", size: 30)
 
-        //label.textAlignment = .Center
+        let label = UILabel(frame: CGRectMake(80, 60, view.frame.width, 50))
+        label.text = titleText
         view.addSubview(label)
         
-        
-       
         let font = UIFont(name: "AvenirNext-MediumItalic", size: 20)
 
         let infostring = infoText as NSString
@@ -61,7 +46,6 @@ class ConceptScroll: UIViewController {
         info.text = infoText
         info.textColor = UIColor(red: 242/225, green: 133/225, blue: 141/225, alpha: 1)
         
-        //info.sizeToFit()
         info.font =  UIFont(name: "AvenirNext-MediumItalic", size: 20)
 
         info.numberOfLines = 0
@@ -82,7 +66,6 @@ class ConceptScroll: UIViewController {
         
         let title = UILabel(frame: CGRectMake(100, 305, head!.size.width, head!.size.height))
         title.text = titles[0]
-        //title.textColor = UIColor.whiteColor()
         self.view.addSubview(title)
         
         let font = UIFont(name: "Helvetica", size: 20)
@@ -97,21 +80,8 @@ class ConceptScroll: UIViewController {
                 boundingBox.size.width, boundingBox.size.height))
         info.text = infos[0]
         info.textColor = UIColor.blackColor()
-        //info.sizeToFit()
         info.numberOfLines = 0
         self.view.addSubview(info)
-        
-        
     }
     
-    
-
-    /*
-    // Only override drawRect: if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func drawRect(rect: CGRect) {
-        // Drawing code
-    }
-    */
-
 }

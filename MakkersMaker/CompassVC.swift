@@ -7,6 +7,7 @@
 
 import UIKit
 import CoreLocation
+import CoreMotion
 import Darwin
 import Alamofire
 
@@ -28,13 +29,7 @@ class CompassVC: UIViewController, CLLocationManagerDelegate {
     
     var locationManager:CLLocationManager!
     let reachability = Reachability.reachabilityForInternetConnection()
-    
-    var distLabel:UILabel!
-    var headingLabel:UILabel!
-    var heading2Label:UILabel!
-    var locationLabel:UILabel!
-    var partnerLabel:UILabel!
-    var degreesLabel:UILabel!
+    var motionManager = CMMotionManager()
     
     let pi = M_PI
     
@@ -57,9 +52,7 @@ class CompassVC: UIViewController, CLLocationManagerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //self.clearNSUserDefault()
-        
-        NSUserDefaults.standardUserDefaults().setInteger(2, forKey: "lastPage")
+        NSUserDefaults.standardUserDefaults().setInteger(1, forKey: "lastPage")
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "reachabilityChanged:", name: ReachabilityChangedNotification, object: reachability)
         reachability.startNotifier()
@@ -73,58 +66,50 @@ class CompassVC: UIViewController, CLLocationManagerDelegate {
         locationManager.startUpdatingLocation()
         locationManager.startUpdatingHeading()
         locationManager.headingFilter = 5
-        //locationManager.headingFilter = kCLHeadingFilterNone
         locationManager.distanceFilter = 2.5
         
         self.view = Challenge1View(frame: UIScreen.mainScreen().bounds)
-        
-//        self.distLabel = UILabel(frame: CGRectMake(100, 250, 500, 50))
-//        self.distLabel.text = "Afstand!"
-//        self.view.addSubview(self.distLabel)
-//        
-//        self.headingLabel = UILabel(frame: CGRectMake(100, 275, 500, 50))
-//        self.headingLabel.text = "Heading!"
-//        self.view.addSubview(self.headingLabel)
-//        
-//        self.heading2Label = UILabel(frame: CGRectMake(100, 300, 500, 50))
-//        self.heading2Label.text = "Heading 2!"
-//        self.view.addSubview(self.heading2Label)
-//        
-//        self.locationLabel = UILabel(frame: CGRectMake(10, 325, 500, 50))
-//        self.locationLabel.text = "Location!"
-//        self.view.addSubview(self.locationLabel)
-//        
-//        self.partnerLabel = UILabel(frame: CGRectMake(10, 350, 500, 50))
-//        self.partnerLabel.text = "Partner!"
-//        self.view.addSubview(self.partnerLabel)
-//        
-//        self.degreesLabel = UILabel(frame: CGRectMake(100, 375, 500, 50))
-//        self.degreesLabel.text = "Degrees!"
-//        self.view.addSubview(self.degreesLabel)
         
         if reachability.isReachable() {
         } else {
             println("NO Internet!")
             self.noInternetAlert()
         }
+        self.fistbump()
         
         self.getPartnerName()
         
-        self.theView.glassFill()
+        self.theView.glassFill(200.0)
         
         self.checkDB()
         self.timer1 = NSTimer.scheduledTimerWithTimeInterval(5, target: self, selector: "checkDB", userInfo: nil, repeats: true)
         self.timer2 = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "rotateCompass", userInfo: nil, repeats: true)
         
-        //DEBUG
-        NSTimer.scheduledTimerWithTimeInterval(11, target: self, selector: "nextPage", userInfo: nil, repeats: false)
+    }
+    
+    func fistbump() {
+        if self.motionManager.deviceMotionAvailable {
+            self.motionManager.deviceMotionUpdateInterval = 0.1
+            self.motionManager.startDeviceMotionUpdatesToQueue(NSOperationQueue.mainQueue()) {
+                [weak self] (data: CMDeviceMotion!, error: NSError!) in
+                if (data.userAcceleration.x < -1 || data.userAcceleration.x > 1) {
+                    if (self!.calcDist() < 5) {
+                        self?.motionManager.stopDeviceMotionUpdates()
+                        self!.navigationController?.pushViewController(FreeDrinkVC(), animated: true)
+                    }
+                    println("Acceleration noticed! \(data.userAcceleration.x)")
+                }
+            }
+        } else {
+            println("DeviceMotion is not available")
+        }
     }
     
     func reachabilityChanged(note: NSNotification) {
         let reachability = note.object as! Reachability
         
         if reachability.isReachable() {
-            //println("Internet is back!")
+            //println("Internet!")
         } else {
             self.noInternetAlert()
         }
@@ -161,9 +146,6 @@ class CompassVC: UIViewController, CLLocationManagerDelegate {
         self.userLon = userLocation.coordinate.longitude
         
         GPSdegrees = self.compass(self.userLat, y1: self.userLon, x2:self.partnerLat, y2:self.partnerLon)
-        
-//        self.distLabel.text = "\(self.calcDist())m"
-//        self.locationLabel.text = "\(self.userLat) , \(self.userLon)"
     }
     
     func locationManager(manager: CLLocationManager!, didUpdateHeading newHeading: CLHeading!) {
@@ -174,9 +156,6 @@ class CompassVC: UIViewController, CLLocationManagerDelegate {
         if h2 >= 0 {
             heading = h2
         }
-        
-//        self.headingLabel.text = "H1 : \(round(heading))°"
-//        self.heading2Label.text = "H2 : \(round(h2))°"
     }
     
     func rotateCompass() {
@@ -192,18 +171,12 @@ class CompassVC: UIViewController, CLLocationManagerDelegate {
                 self.theView.imageView.transform = CGAffineTransformMakeRotation(CGFloat(2*self.pi*self.partnerDegrees/360))
             })
             self.lastRotation = partnerDegrees
-        } else {
-            //println("Change to small to rotate! \(partnerDegrees)°")
         }
-        
-        //self.degreesLabel.text = "R : \(round(partnerDegrees))°"
         
     }
     
     func checkDB() {
-        //println("Check DB!")
         if reachability.isReachable() {
-            //println("Internet is on")
             self.getPartnerLocation()
             self.postUserLocation(userLat, lon: userLon)
         }
@@ -241,8 +214,6 @@ class CompassVC: UIViewController, CLLocationManagerDelegate {
             
             println("Partner \(self.partnerLat) , \(self.partnerLon)")
             
-            //self.distLabel.text = "\(self.calcDist())m"
-            //self.partnerLabel.text = "\(self.partnerLat) , \(self.partnerLon)"
         }
     }
     
@@ -260,7 +231,9 @@ class CompassVC: UIViewController, CLLocationManagerDelegate {
     
     func calcDist() -> Double {
         var dist = round(CLLocation.distance(from: CLLocationCoordinate2DMake(self.userLat, self.userLon), to: CLLocationCoordinate2DMake(self.partnerLat, self.partnerLon))*10)/10
-        //println("Distance : \(dist)m")
+        
+        self.theView.glassFill(dist)
+        
         return dist
     }
     
@@ -280,7 +253,6 @@ class CompassVC: UIViewController, CLLocationManagerDelegate {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
 }

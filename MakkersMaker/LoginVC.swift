@@ -10,7 +10,6 @@ import Alamofire
 
 class LoginVC: UIViewController {
     
-    //var nameInput:UITextField!
     let stageBtn:UIButton!
     let genreBtn:UIButton!
     var fav_stage:String!
@@ -26,37 +25,21 @@ class LoginVC: UIViewController {
         super.viewDidLoad()
         NSUserDefaults.standardUserDefaults().setInteger(0, forKey: "lastPage")
         
-        //self.clearNSUserDefault()
         self.view = UserInfoView()
-        //self.view.backgroundColor = UIColor.whiteColor()
         self.login()
-        
-        
-        //var tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "DismissKeyboard")
-        //view.addGestureRecognizer(tap)
     }
     
     func login(){
-        println("LOGIN")
         
         stageBtn.setTitle("Select stage...", forState: UIControlState.Normal)
         stageBtn.frame = CGRect(x: -10, y: 400, width: 250, height: 50)
         self.view.addSubview(stageBtn)
         stageBtn.addTarget(self, action: "stageButtonTouched", forControlEvents: UIControlEvents.TouchUpInside)
         
-      
-  
-        
         genreBtn.setTitle("Select genre...", forState: UIControlState.Normal)
         genreBtn.frame = CGRect(x: -10, y: 295, width: 250, height: 50)
         self.view.addSubview(genreBtn)
         genreBtn.addTarget(self, action: "genreButtonTouched", forControlEvents: UIControlEvents.TouchUpInside)
-        
-//        let sendBtn = UIButton.buttonWithType(UIButtonType.System) as! UIButton
-//        sendBtn.setTitle("Send...", forState: UIControlState.Normal)
-//        sendBtn.frame = CGRect(x: -10, y: 445, width: 250, height: 50)
-//        self.view.addSubview(sendBtn)
-//        sendBtn.addTarget(self, action: "sendClicked:", forControlEvents: UIControlEvents.TouchUpInside)
         
         var sendb = pageButton(theViewC: self, titel: "Send", targetfunction: "n")
         
@@ -75,8 +58,7 @@ class LoginVC: UIViewController {
     }
     
     func nextPage( sender:UIButton ) {
-        println("next page in userinfovc")
-        //Validation
+        
         if (self.theView.nameInput!.text == "") {
             validationAlert("Login mislukt", message: "Gelieve uw naam in te vullen")
             return
@@ -89,16 +71,6 @@ class LoginVC: UIViewController {
             validationAlert("Login mislukt", message: "Gelieve uw favoriete podium te selecteren")
             return
         }
-        
-        if (NSUserDefaults.standardUserDefaults().integerForKey("user_id") != 0) {
-            println("user_id != 0")
-            return
-        }
-        
-        /* DEBUG
-        for view in self.view.subviews{
-        view.removeFromSuperview()
-        }*/
         
         println(self.theView.nameInput!.text)
         println(self.fav_stage)
@@ -364,7 +336,6 @@ class LoginVC: UIViewController {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     override init(nibName nibNameOrNil:String?, bundle nibBundleOrNil:NSBundle?){
